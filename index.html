@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ryan Motivates</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0f172a;
+        --card: rgba(15, 23, 42, 0.88);
+        --text: #e2e8f0;
+        --accent: #38bdf8;
+        --accent-strong: #0ea5e9;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(56, 189, 248, 0.3), transparent 35%),
+          linear-gradient(160deg, #020617, var(--bg));
+        color: var(--text);
+      }
+
+      main {
+        width: min(100%, 720px);
+        background: var(--card);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 24px 80px rgba(2, 6, 23, 0.45);
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2.2rem, 4vw, 3.5rem);
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      .quote {
+        margin: 28px 0;
+        padding: 24px;
+        border-radius: 18px;
+        background: rgba(15, 118, 110, 0.2);
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 22px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        color: #082f49;
+        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      }
+
+      button:hover {
+        filter: brightness(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>Ready for Vercel deployment</p>
+      <h1>Ryan Motivates</h1>
+      <p>
+        A lightweight motivational landing page that can be deployed directly on
+        Vercel with no build step.
+      </p>
+      <div class="quote" id="quote">Start where you are. Use what you have. Do what you can.</div>
+      <button id="motivate" type="button">Motivate me</button>
+    </main>
+    <script>
+      const quotes = [
+        "Start where you are. Use what you have. Do what you can.",
+        "Small progress is still progress.",
+        "Discipline gets you places motivation cannot.",
+        "You do not have to be extreme, just consistent.",
+      ];
+
+      let quoteIndex = 0;
+      const quoteElement = document.getElementById("quote");
+
+      document.getElementById("motivate").addEventListener("click", () => {
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+        quoteElement.textContent = quotes[quoteIndex];
+      });
+    </script>
+  </body>
+</html>
