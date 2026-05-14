@@ -150,6 +150,7 @@ const App = () => {
       <Hero />
       <Occasions />
       <Cabin />
+      <CabinVideo />
       <Driver />
       <Reserve />
       <CTAFooter />

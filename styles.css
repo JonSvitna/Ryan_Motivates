@@ -1068,6 +1068,37 @@ body { line-height: 1.55; }
   line-height: 1;
 }
 
+
+/* ================================================================
+   CABIN VIDEO — HyperFrames MP4 embed
+   ================================================================ */
+.cabin-video {
+  position: relative;
+  background: var(--ink-0);
+  padding: 120px 56px 160px;
+}
+.cabin-video-head {
+  max-width: 900px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.cabin-video-head .display {
+  font-size: clamp(40px, 4.5vw, 80px);
+  margin-top: 20px;
+  color: var(--pearl);
+}
+.cabin-video-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+}
+.cabin-video-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--ink-0);
+}
+
 /* ================================================================
    EXPERIENCE — minimal feature list, type-driven
    ================================================================ */
