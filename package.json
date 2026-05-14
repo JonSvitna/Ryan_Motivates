@@ -1,8 +1,8 @@
 {
   "name": "ryan-motivates",
   "private": true,
-  "description": "Static marketing site — no compile step; assets served from repo root.",
+  "description": "Static marketing site — build mirrors root assets into public/ for Vercel.",
   "scripts": {
-    "build": "node -e \"console.log('Static site: no build output directory change.')\""
+    "build": "node scripts/copy-static-to-public.js"
   }
 }
