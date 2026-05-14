@@ -3,8 +3,10 @@ import { useState } from "react";
 import { SITE } from "../content/site";
 
 const links = [
+  { href: "#occasions", label: "Occasions" },
+  { href: "#luxury", label: "Cabin" },
   { href: "#fleet", label: "Fleet" },
-  { href: "#services", label: "Services" },
+  { href: "#services", label: "Routes" },
   { href: "#proof", label: "Clients" },
   { href: "#reserve", label: "Reserve" },
 ];

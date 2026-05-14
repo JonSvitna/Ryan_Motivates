@@ -22,11 +22,8 @@ export function TestimonialDeck() {
             </h2>
           </div>
           <p className="max-w-sm font-mono text-[10px] uppercase leading-relaxed tracking-[0.26em] text-mist">
-            Inspired by how firms like{" "}
-            <a className="text-champagne/90 underline-offset-4 hover:underline" href="https://www.savoya.com/">
-              Savoya
-            </a>{" "}
-            publish confidence — adapted here for a solo operator in Baltimore.
+            Executive transport pages often read like insurance binders. Here, the brief is shorter: one driver, one car, receipts your office can file without
+            translation.
           </p>
         </motion.div>
 

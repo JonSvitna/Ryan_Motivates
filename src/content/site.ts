@@ -1,7 +1,7 @@
-/** Site copy and configuration (from prior Night Series build). */
+/** Site copy — aligned to luxury chauffeur flyer + Night Series operations. */
 export const SITE = {
   brand: "Night Series",
-  tagline: "Private chauffeur. One sedan. Yours for the evening.",
+  tagline: "Private BMW 750 chauffeur — Baltimore, BWI, DCA, IAD, and Washington.",
   phoneDisplay: "667 · 207 · 1472",
   phoneTel: "+16672071472",
   driver: "Ryan J.",
@@ -10,60 +10,85 @@ export const SITE = {
   interior: "Oxblood leather",
   city: "Baltimore, MD",
   coverage: ["Baltimore metro", "Annapolis", "Columbia", "BWI · DCA · IAD", "Washington, D.C."],
-  hero: {
-    kicker: "Private chauffeur · Baltimore and the District",
-    title: "Ground that reads",
-    titleAccent: "like a closing frame.",
-    sub:
-      "One chauffeur, one BMW 750, composed the way a shoot day is composed: quiet call sheet, exact timing, no crowd.",
+  flyer: {
+    luxuryWord: "LUXURY",
+    serviceLine: "CHAUFFEUR SERVICE",
+    tagA: "Arrive in style. Every time.",
+    tagB: "White BMW 750 · Power. Prestige. Performance.",
+    pillars: [
+      { title: "Professional chauffeurs", icon: "shield" as const },
+      { title: "On time, every time", icon: "clock" as const },
+      { title: "Private and discreet", icon: "lock" as const },
+      { title: "Luxury you can feel", icon: "star" as const },
+    ],
+    occasions: [
+      { label: "Weddings", icon: "heart" as const },
+      { label: "Proms and formal events", icon: "grad" as const },
+      { label: "Airport transfers", icon: "plane" as const },
+      { label: "Business travel", icon: "case" as const },
+      { label: "Special occasions", icon: "spark" as const },
+      { label: "Photo shoots", icon: "cam" as const },
+      { label: "Night outs and more", icon: "moon" as const },
+    ],
+    luxuryTitle: "The luxury experience",
+    luxuryBullets: [
+      "Oxblood leather interior",
+      "Ambient cabin lighting",
+      "Heated, ventilated and massaging seats",
+      "Smooth, quiet, powerful ride",
+      "Complimentary water and phone chargers",
+      "Personalized music and cabin mood",
+      "Clean, private, chauffeur-grade space",
+    ],
+    interiors: [
+      { src: "/assets/cabin-rear.png", alt: "Rear cabin — oxblood leather seating" },
+      { src: "/assets/cabin-dash.png", alt: "Cockpit — BMW dash and ambient light" },
+      { src: "/assets/cabin-rear.png", alt: "Cabin detail — stitching and trim" },
+    ],
+    driverLine: "Driven by professionalism.",
+    driverQuote: "Your comfort. Your time. My priority.",
+    footerStrip: "Reliable · Respectful · Professional",
   },
-  stats: [
-    { value: "10+", label: "Years behind the wheel for private clients" },
-    { value: "1", label: "Vehicle — so the cabin always matches the brief" },
-    { value: "<60m", label: "Typical confirmation window on new requests" },
-  ],
+  hero: {
+    kicker: "Private hire · Baltimore and the District",
+    sub: "One sedan, one chauffeur, composed like a locked picture edit — call sheet clear, timing exact, cabin lit before you step in.",
+  },
   fleet: [
     {
-      title: "Flagship — your frame",
-      body: "Pearl white 750, oxblood cabin, ambient lighting dialed before you arrive.",
+      title: "Flagship on the road",
+      body: "Pearl white 750 with oxblood cabin — the same vehicle featured on the print piece.",
       image: "/assets/bmw-hero-v2.png",
       real: true,
     },
     {
-      title: "Alternate sedan",
-      body: "Placeholder — reserve this slot when a second vehicle is added to the roster.",
+      title: "Second vehicle (coming)",
+      body: "Placeholder frame until photography matches the flagship grade.",
       image: "https://picsum.photos/seed/rsfleet2/960/640",
-      real: false,
-    },
-    {
-      title: "Evening SUV",
-      body: "Placeholder — imagery for larger groups or luggage-heavy routes.",
-      image: "https://picsum.photos/seed/rsfleet3/960/640",
       real: false,
     },
   ],
   services: [
     {
-      title: "Airport runs",
-      copy: "BWI, DCA, IAD — curbside timing that respects TSA lines you cannot control.",
+      title: "Airport transfers",
+      copy: "BWI, DCA, IAD — curbside timing that respects what TSA does to your schedule.",
     },
     {
       title: "Weddings and anniversaries",
-      copy: "Door-to-door continuity: first look through last guest, same driver, same car.",
+      copy: "First look through last guest: one driver, one car, one thread.",
     },
     {
       title: "Executive evenings",
-      copy: "Dinner in Harbor East, meetings downtown, late Capitol Hill — one thread the whole night.",
+      copy: "Harbor East to Capitol Hill and back — holds and releases on your signal.",
     },
     {
       title: "By the hour",
-      copy: "Hold the sedan between venues; Ryan stays on comms, not on a timer app.",
+      copy: "Keep the sedan between venues; Ryan stays on comms, not on a surge model.",
     },
   ],
   testimonials: [
     {
       quote:
-        "He was at the curb before I finished checking out. The cabin smelled like nothing — which is exactly what I wanted after a week of conference hotels.",
+        "He was at the curb before I finished checking out. The cabin read neutral — which is what I wanted after a week of conference hotels.",
       name: "Margaret Voss",
       role: "Operations lead",
       org: "Regional health system",
@@ -77,7 +102,7 @@ export const SITE = {
     },
     {
       quote:
-        "We used him for a client dinner and an 11 p.m. BWI pull. Same polish at both ends. My EA now keeps the card in her desk, not her phone.",
+        "We used him for a client dinner and an 11 p.m. BWI pull. Same polish at both ends. My EA keeps the card in her desk, not her phone.",
       name: "Helena Whitford",
       role: "Chief of staff",
       org: "DC policy firm",

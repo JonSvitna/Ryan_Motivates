@@ -1,10 +1,12 @@
+import { DriverBand } from "./components/DriverBand";
 import { FleetZigzag } from "./components/FleetZigzag";
 import { Footer } from "./components/Footer";
 import { HeroCinematic } from "./components/HeroCinematic";
+import { LuxuryExperienceSection } from "./components/LuxuryExperienceSection";
 import { Nav } from "./components/Nav";
+import { OccasionsGrid } from "./components/OccasionsGrid";
 import { ReserveForm } from "./components/ReserveForm";
 import { ServicesBento } from "./components/ServicesBento";
-import { StatsStrip } from "./components/StatsStrip";
 import { TestimonialDeck } from "./components/TestimonialDeck";
 
 export default function App() {
@@ -14,10 +16,12 @@ export default function App() {
       <Nav />
       <main>
         <HeroCinematic />
-        <StatsStrip />
+        <OccasionsGrid />
+        <LuxuryExperienceSection />
         <FleetZigzag />
         <ServicesBento />
         <TestimonialDeck />
+        <DriverBand />
         <ReserveForm />
       </main>
       <Footer />

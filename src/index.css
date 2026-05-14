@@ -3,6 +3,7 @@
 @theme {
   --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
 
   --color-void: #050608;
   --color-ink: #0c0e12;
