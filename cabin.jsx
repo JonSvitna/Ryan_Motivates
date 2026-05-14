@@ -12,7 +12,7 @@ const Cabin = () => {
           setActive(parseInt(e.target.dataset.idx, 10));
         }
       });
-    }, { rootMargin: '-40% 0% -40% 0%', threshold: 0 });
+    }, { rootMargin: '-28% 0% -28% 0%', threshold: 0 });
     images.forEach((img) => io.observe(img));
     return () => io.disconnect();
   }, []);

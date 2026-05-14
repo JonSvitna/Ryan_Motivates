@@ -28,7 +28,7 @@ const Farewell = () => {
       <p className="farewell-kicker">The impression that remains</p>
       <p className="farewell-line">
         Not mileage logged in an app — <em>the silence after the door closes,</em>
-        when the city sounds like someone else\u2019s concern.
+        when the city sounds like someone else&#x2019;s concern.
       </p>
       <p className="farewell-sub">
         Precision reserved for guests who expect the same from a vehicle as from a tailor.
