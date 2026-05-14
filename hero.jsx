@@ -1,32 +1,54 @@
-// Hero — cinematic intimate night
+// Hero — cinematic luxury automotive entrance
 const Hero = () => {
   return (
     <section className="hero" id="hero" data-screen-label="01 Hero">
+
+      {/* ── Depth layer 0: base gradient ── */}
       <div className="hero-bg" />
+
+      {/* ── Depth layer 1: atmospheric rain / streaks ── */}
+      <div className="hero-rain" aria-hidden="true" />
+
+      {/* ── Depth layer 2: ambient fog / haze ── */}
+      <div className="hero-fog" aria-hidden="true" />
+
+      {/* ── Depth layer 3: warm glows ── */}
       <div className="hero-glow" />
       <div className="hero-glow b" />
+
+      {/* ── Depth layer 4: sweeping headlight ── */}
       <div className="hero-beam" />
+      <div className="hero-beam b" />
+
+      {/* ── Depth layer 5: film grain ── */}
       <div className="hero-noise" />
 
-      {/* car silhouette */}
+      {/* ── Depth layer 6: vehicle ── */}
       <div className="hero-stage">
         <div className="image-shell image-shell--hero">
           <image-slot
             id="hero-car-v2"
             src="/assets/bmw-hero-v2.png"
-            placeholder="White BMW 750 · black ice"
+            placeholder="White BMW 750 · satin black night"
             shape="rect"
             fit="contain"
           ></image-slot>
         </div>
       </div>
 
+      {/* ── Depth layer 7: wet pavement glow beneath car ── */}
+      <div className="hero-pavement" aria-hidden="true" />
+
+      {/* ── Depth layer 8: cinematic vignette ── */}
+      <div className="hero-vignette" aria-hidden="true" />
+
+      {/* ── Depth layer 9: copy ── */}
       <div className="hero-content">
         <div>
           <div className="hero-eyebrow">Private Chauffeur · BMW 750 · Baltimore &amp; Beyond</div>
           <h1 className="hero-display">
-            Arrive Like
-            <em>It Matters.</em>
+            <span className="line-1">Arrive Like</span>
+            <em className="line-2">It Matters.</em>
           </h1>
         </div>
 

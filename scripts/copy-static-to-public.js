@@ -18,7 +18,7 @@ for (const name of rootFiles) {
 }
 
 for (const name of fs.readdirSync(root)) {
-  if (name.endsWith(".jsx")) {
+  if (name.endsWith(".jsx") || (name.endsWith(".js") && name !== "image-slot.js")) {
     fs.copyFileSync(path.join(root, name), path.join(dest, name));
   }
 }
