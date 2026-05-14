@@ -25,7 +25,7 @@
     });
 
     // Car: slow dolly-push → scale 1.06 → 1, rise 30px → 0
-    tl.from('.hero-stage', {
+    tl.from('.hero-vehicle', {
       scale: 1.065,
       y: 28,
       duration: 3.4,
@@ -68,7 +68,7 @@
 
     // ── Hero scroll parallax ───────────────────────────────────────────────
     // Car drifts up slightly — creates depth as you enter the next section
-    gsap.to('.hero-stage', {
+    gsap.to('.hero-vehicle', {
       scrollTrigger: {
         trigger: '.hero',
         start: 'top top',
@@ -134,7 +134,7 @@
           const dy = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
 
           // Car — counterweight to cursor, slow
-          gsap.to('.hero-stage', {
+          gsap.to('.hero-vehicle', {
             x: dx * -22, y: dy * -11,
             duration: 1.9, ease: 'power2.out', overwrite: 'auto',
           });
@@ -164,7 +164,7 @@
       }, { passive: true });
 
       hero.addEventListener('mouseleave', () => {
-        gsap.to(['.hero-stage', '.hero-glow', '.hero-beam', '.hero-pavement', '.hero-fog'], {
+        gsap.to(['.hero-vehicle', '.hero-glow', '.hero-beam', '.hero-fog'], {
           x: 0, y: 0, duration: 2.6, ease: 'power3.out', overwrite: 'auto',
         });
       }, { passive: true });
@@ -174,6 +174,18 @@
     // ── Staggered grid reveals ─────────────────────────────────────────────
     // These elements don't have [data-reveal], so no IO-observer conflict.
     // GSAP handles them with scrubbed ScrollTrigger staggers.
+
+    // Showcase panels — slide in from opposite sides
+    if ($$('.showcase-pane').length) {
+      gsap.from('.showcase-pane--ext', {
+        scrollTrigger: { trigger: '.showcase', start: 'top 90%', toggleActions: 'play none none none' },
+        x: -60, opacity: 0, duration: 1.4, ease: 'power3.out', clearProps: 'all',
+      });
+      gsap.from('.showcase-pane--int', {
+        scrollTrigger: { trigger: '.showcase', start: 'top 90%', toggleActions: 'play none none none' },
+        x: 60, opacity: 0, duration: 1.4, ease: 'power3.out', clearProps: 'all',
+      });
+    }
 
     if ($$('.occ-item').length) {
       gsap.from('.occ-item', {

@@ -154,6 +154,7 @@ const App = () => {
       {t.ribbon && <div className="ribbon" />}
       <Nav />
       <Hero />
+      <Showcase />
       <Arrival />
       <Occasions />
       <Nameplate />

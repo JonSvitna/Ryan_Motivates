@@ -426,57 +426,82 @@ body { line-height: 1.55; }
 }
 
 /* ================================================================
-   HERO — cinematic, intimate night
+   HERO — full-bleed vehicle background · WE-style automotive
    ================================================================ */
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 760px;
+  height: 100dvh;
+  min-height: 680px;
   overflow: hidden;
   background: var(--ink-0);
 }
-.hero-bg {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(160, 120, 70, 0.14), transparent 72%),
-    radial-gradient(ellipse 70% 50% at 15% 25%, rgba(80, 60, 35, 0.22), transparent 58%),
-    radial-gradient(ellipse 50% 45% at 92% 65%, rgba(200, 180, 130, 0.07), transparent 62%),
-    linear-gradient(180deg, #050403 0%, #080705 42%, #0d0a06 100%);
+
+/* Full-bleed vehicle photo — the car IS the background */
+.hero-vehicle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  will-change: transform;
 }
+.hero-vehicle image-slot {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Cinematic gradient overlay — legibility + atmosphere */
+.hero-overlay {
+  position: absolute; inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    /* Strong bottom fade — anchors the text */
+    linear-gradient(0deg, rgba(5,4,3,0.97) 0%, rgba(5,4,3,0.75) 28%, rgba(5,4,3,0.30) 55%, transparent 75%),
+    /* Left-edge darken — grounds the copy */
+    linear-gradient(90deg, rgba(5,4,3,0.55) 0%, transparent 50%),
+    /* Top subtle — nav area */
+    linear-gradient(180deg, rgba(5,4,3,0.50) 0%, transparent 25%);
+}
+
+/* Film grain */
 .hero-noise {
   position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.18 0'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
-  opacity: 0.35;
+  z-index: 9;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.12 0'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+  opacity: 0.3;
   mix-blend-mode: overlay;
   pointer-events: none;
 }
+
+/* Warm glows — add cinematic depth over the photo */
 .hero-glow {
   position: absolute;
   bottom: -10%; left: -10%;
   width: 60%; height: 80%;
   background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200, 168, 100, 0.10), transparent 65%);
   filter: blur(48px);
+  z-index: 4;
   animation: drift 18s cubic-bezier(0.32, 0.72, 0, 1) infinite;
   will-change: transform;
 }
 .hero-glow.b {
   bottom: 20%; left: auto; right: -10%;
   width: 50%; height: 60%;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(160, 120, 70, 0.14), transparent 65%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(160, 120, 70, 0.12), transparent 65%);
   animation-delay: -9s;
-  will-change: transform;
 }
 @keyframes drift {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(8%, -4%); }
 }
 
-/* sweeping headlight — warm gold */
+/* Sweeping headlight beams */
 .hero-beam {
   position: absolute;
   top: 30%; left: -30%;
   width: 60%; height: 70%;
-  background: radial-gradient(ellipse 30% 50% at 0% 50%, rgba(232, 200, 140, 0.13), transparent 70%);
+  z-index: 5;
+  background: radial-gradient(ellipse 30% 50% at 0% 50%, rgba(232, 200, 140, 0.10), transparent 70%);
   filter: blur(32px);
   animation: beam 16s cubic-bezier(0.32, 0.72, 0, 1) infinite;
   transform-origin: 0% 50%;
@@ -487,22 +512,7 @@ body { line-height: 1.55; }
   100% { transform: translateX(180vw) rotate(-2deg); opacity: 0; }
 }
 
-/* hero centered car slot */
-.hero-stage {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 60vh;
-  display: flex; align-items: flex-end; justify-content: center;
-  z-index: 6;
-  will-change: transform;
-}
-.hero-stage image-slot {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-/* Double-bezel frame (Taste Skill: nested enclosure) */
+/* Double-bezel frame (interior/portrait/arrival sections) */
 .image-shell {
   position: relative;
   box-sizing: border-box;
@@ -522,11 +532,6 @@ body { line-height: 1.55; }
   pointer-events: none;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
-.image-shell--hero {
-  width: min(96%, 1400px);
-  height: 100%;
-  max-height: 56vh;
-}
 .image-shell--arrival,
 .image-shell--portrait {
   width: 100%;
@@ -541,32 +546,29 @@ body { line-height: 1.55; }
   border-radius: 16px;
   overflow: hidden;
 }
-.hero-stage::before {
-  content: ""; position: absolute;
-  left: 10%; right: 10%; bottom: 8%;
-  height: 14%;
-  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(200,165,100,0.20), transparent 70%);
-  filter: blur(22px);
-  z-index: -1;
-}
 
-/* hero copy stack */
+/* ── Hero copy — all in lower section (WE-style) ── */
 .hero-content {
-  position: relative;
-  z-index: 9;
-  height: 100%;
-  display: flex; flex-direction: column; justify-content: space-between;
-  padding: 18vh 56px 56px;
-  max-width: 1800px; margin: 0 auto;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 60px 64px;
   pointer-events: none;
+  gap: 36px;
 }
 .hero-content > * { pointer-events: auto; }
+
+.hero-text-block { max-width: 960px; }
 
 .hero-eyebrow {
   font-family: var(--f-mono);
   font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase;
   color: var(--rose);
   display: flex; align-items: center; gap: 14px;
+  margin-bottom: 22px;
 }
 .hero-eyebrow::before {
   content: ""; width: 36px; height: 1px; background: var(--rose);
@@ -575,16 +577,13 @@ body { line-height: 1.55; }
 .hero-display {
   font-family: var(--f-display);
   font-weight: 400;
-  font-size: clamp(80px, 16vw, 280px);
-  line-height: 0.86;
+  font-size: clamp(68px, 10vw, 168px);
+  line-height: 0.88;
   letter-spacing: -0.025em;
   color: var(--pearl);
-  margin-top: 24px;
-  position: relative;
+  margin-bottom: 28px;
 }
-.hero-display .line-1 {
-  display: block;
-}
+.hero-display .line-1 { display: block; }
 .hero-display em,
 .hero-display .line-2 {
   font-family: var(--f-serif);
@@ -592,32 +591,47 @@ body { line-height: 1.55; }
   font-weight: 400;
   color: var(--rose);
   display: block;
-  font-size: 0.62em;
+  font-size: 0.64em;
   letter-spacing: -0.01em;
-  margin-left: 0.08em;
-  margin-top: -0.04em;
+  margin-left: 0.06em;
   background: linear-gradient(180deg, var(--rose-bright), var(--rose) 50%, var(--rose-deep));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.hero-foot {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  gap: 48px;
-}
-.hero-tag {
+.hero-sub {
   font-family: var(--f-serif);
   font-style: italic;
   font-size: 20px;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--pearl-dim);
-  max-width: 320px;
+  max-width: 520px;
+  margin-bottom: 40px;
 }
-.hero-tag em { color: var(--rose); font-style: italic; }
+.hero-sub em { color: var(--rose-bright); font-style: italic; }
 
-.hero-meta {
-  display: flex; gap: 56px;
+.hero-cta-row {
+  display: flex; align-items: center; gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Bottom meta strip — horizontal spec line */
+.hero-meta-strip {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(200, 168, 122, 0.25);
+}
+.hero-meta-strip .hero-meta-item {
+  padding: 0 28px;
+}
+.hero-meta-strip .hero-meta-item:first-child { padding-left: 0; }
+.hero-meta-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(200, 168, 122, 0.22);
+  flex-shrink: 0;
 }
 .hero-meta-item .l {
   display: block;
@@ -626,18 +640,15 @@ body { line-height: 1.55; }
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--mute);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 .hero-meta-item .v {
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: 18px;
+  font-family: var(--f-sans);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--pearl);
-  line-height: 1.2;
-}
-
-.hero-cta-row {
-  display: flex; align-items: center; gap: 28px;
+  font-weight: 400;
 }
 
 .hero-scroll {
@@ -647,7 +658,7 @@ body { line-height: 1.55; }
   font-family: var(--f-mono);
   font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--mute);
-  z-index: 10;
+  z-index: 11;
 }
 .hero-scroll .stroke {
   width: 1px; height: 56px;
@@ -660,6 +671,95 @@ body { line-height: 1.55; }
   41% { transform: scaleY(1); transform-origin: bottom; }
   80%, 100% { transform: scaleY(0); transform-origin: bottom; }
 }
+
+/* ================================================================
+   SHOWCASE — edge-to-edge two-panel vehicle spread
+   ================================================================ */
+.showcase {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  height: 68vh;
+  min-height: 460px;
+  overflow: hidden;
+  position: relative;
+}
+.showcase-pane {
+  position: relative;
+  overflow: hidden;
+}
+.showcase-img {
+  position: absolute;
+  inset: 0;
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.showcase-img image-slot {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.showcase-pane:hover .showcase-img {
+  transform: scale(1.045);
+}
+.showcase-overlay {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    0deg,
+    rgba(5, 4, 3, 0.82) 0%,
+    rgba(5, 4, 3, 0.22) 40%,
+    transparent 65%
+  );
+}
+.showcase-label {
+  position: absolute;
+  bottom: 36px; left: 36px;
+  z-index: 3;
+}
+.showcase-tag {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 10px;
+}
+.showcase-value {
+  display: block;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 36px);
+  color: var(--pearl);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.showcase-num {
+  position: absolute;
+  top: 28px; right: 28px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: rgba(200, 168, 122, 0.4);
+  z-index: 3;
+}
+/* Divider line between panels */
+.showcase-pane--ext {
+  border-right: 1px solid rgba(200, 168, 122, 0.15);
+}
+/* Subtle top accent on each panel */
+.showcase-pane::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose), transparent 60%);
+  z-index: 3;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.showcase-pane:hover::before { transform: scaleX(1); }
 
 /* ================================================================
    CHAPTER I — THE ARRIVAL — sticky scroll moment
