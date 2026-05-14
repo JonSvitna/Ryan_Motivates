@@ -1,4 +1,3 @@
-import { Phone } from "@phosphor-icons/react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SITE } from "../content/site";
@@ -9,7 +8,7 @@ export function DriverBand() {
   const inView = useInView(ref, { once: true, margin: "-15%" });
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-[#060708] py-20 md:py-28">
+    <section id="driver" ref={ref} className="relative overflow-hidden bg-void py-16 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_20%_50%,rgba(201,169,98,0.07),transparent_55%)]" />
       <div className="relative mx-auto grid max-w-[1400px] items-center gap-12 px-4 md:grid-cols-12 md:gap-16 md:px-8">
         <motion.div
@@ -32,25 +31,9 @@ export function DriverBand() {
         <motion.div className="md:col-span-8" initial={{ opacity: 0, y: 22 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ ...springPop, delay: 0.05 }}>
           <p className="font-mono text-[10px] uppercase tracking-[0.36em] text-champagne">{SITE.flyer.driverLine}</p>
           <p className="mt-5 max-w-[52ch] text-2xl font-semibold leading-snug tracking-tight text-paper md:text-3xl">{SITE.flyer.driverQuote}</p>
-          <motion.a
-            href={`tel:${SITE.phoneTel}`}
-            className="mt-10 inline-flex items-center gap-4 rounded-2xl border border-champagne/35 bg-champagne/10 px-6 py-4 text-champagne shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform active:scale-[0.99] hover:bg-champagne/15"
-            whileHover={{ x: 4 }}
-            transition={springPop}
-          >
-            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-champagne/40 bg-black/30">
-              <Phone size={24} weight="duotone" />
-            </span>
-            <span>
-              <span className="block font-mono text-[10px] uppercase tracking-[0.28em] text-champagne/80">Call or text</span>
-              <span className="text-lg font-semibold tracking-tight text-paper md:text-xl">
-                {SITE.driver} · {SITE.phoneDisplay}
-              </span>
-            </span>
-          </motion.a>
-          <p className="mt-6 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.26em] text-mist">
+          <p className="mt-8 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.26em] text-mist">
             <span className="inline-block h-px w-8 bg-champagne/50" aria-hidden />
-            Serving Baltimore and surrounding areas
+            {SITE.hero.kicker}
           </p>
         </motion.div>
       </div>

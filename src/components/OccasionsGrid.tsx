@@ -9,7 +9,7 @@ export function OccasionsGrid() {
   const inView = useInView(ref, { once: true, margin: "-12%" });
 
   return (
-    <section id="occasions" ref={ref} className="border-y border-champagne/20 bg-[#08090d] py-20 md:py-28">
+    <section id="occasions" ref={ref} className="border-y border-champagne/20 bg-[#08090d] py-14 md:py-20">
       <div className="mx-auto max-w-[1400px] px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -25,9 +25,9 @@ export function OccasionsGrid() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ ...springPop, delay: 0.08 }}
-          className="mt-14 rounded-[2rem] border border-champagne/30 bg-white/[0.02] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] md:p-10"
+          className="mt-10 rounded-[2rem] border border-champagne/30 bg-white/[0.02] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] md:mt-12 md:p-8"
         >
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-7">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-7">
             {SITE.flyer.occasions.map((o, i) => (
               <motion.div
                 key={o.label}

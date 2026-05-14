@@ -29,11 +29,10 @@ const Reserve = () => {
             Chapter Five — Reserve
           </div>
           <h2 className="display">
-            Your seat,<br/><em>already warmed.</em>
+            Your comfort, your time — <em>same thread to the curb.</em>
           </h2>
           <p className="lede">
-            Tell us when and where. Ryan confirms within the hour — by call or text, personally.
-            No apps. No fleets. No surge.
+            Call or text for the fastest reply. Or send pickup, date, and occasion — Ryan confirms personally, usually within an hour.
           </p>
           <div className="reserve-marks">
             <div className="reserve-mark">
@@ -54,8 +53,14 @@ const Reserve = () => {
         <form className="book-card" onSubmit={submit}>
           {!submitted ? (
             <>
-              <div className="book-eyebrow">The Request</div>
-              <h3>An Evening, <em>Composed.</em></h3>
+              <a className="book-call-primary" href="tel:+16672071472">Call or text · 667 · 207 · 1472</a>
+              <div className="book-divider" aria-hidden="true">
+                <span className="book-divider-line" />
+                <span className="book-divider-label">Or send details</span>
+                <span className="book-divider-line" />
+              </div>
+              <div className="book-eyebrow">The request</div>
+              <h3>An evening, <em>composed.</em></h3>
 
               <div className="book-tabs">
                 {[
@@ -123,7 +128,7 @@ const Reserve = () => {
               </div>
 
               <button type="submit" className="book-submit">
-                <span>Reserve The Evening</span>
+                <span>Send details</span>
                 <span className="arrow" />
               </button>
             </>

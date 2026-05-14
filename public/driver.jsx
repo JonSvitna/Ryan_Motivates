@@ -26,27 +26,9 @@ const Driver = () => {
           <div className="driver-sig">
             <span className="line" />
             <span className="name">
-              Driven By Professionalism
+              Driven by professionalism
               <em>— Ryan J., Chauffeur</em>
             </span>
-          </div>
-          <div className="driver-stats">
-            <div className="driver-stat">
-              <span className="n">10+</span>
-              <span className="l">Years Driving</span>
-            </div>
-            <div className="driver-stat">
-              <span className="n">5★</span>
-              <span className="l">Average Rating</span>
-            </div>
-            <div className="driver-stat">
-              <span className="n">2k+</span>
-              <span className="l">Evenings</span>
-            </div>
-            <div className="driver-stat">
-              <span className="n">100%</span>
-              <span className="l">On Time</span>
-            </div>
           </div>
         </div>
       </div>

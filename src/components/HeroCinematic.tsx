@@ -6,17 +6,19 @@ import { HyperFrame, LetterReveal, springPop } from "../motion/hyperframes";
 
 export function HeroCinematic() {
   const reduce = useReducedMotion();
+  const bokehMobile = 5;
+  const bokehDesktop = 14;
 
   return (
     <section className="relative min-h-[100dvh] overflow-hidden bg-void">
       {/* Night + gold wash (no cool “AI blue” wash — slate + champagne only) */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_65%_8%,rgba(201,169,98,0.11),transparent_55%),radial-gradient(ellipse_70%_45%_at_15%_75%,rgba(40,44,52,0.45),transparent_58%),linear-gradient(180deg,#040508_0%,#090b10_48%,#0b0e14_100%)]" />
 
-      {/* Gold field bokeh */}
-      <div className="pointer-events-none absolute inset-0 opacity-35">
-        {[...Array(16)].map((_, i) => (
+      {/* Gold field bokeh — fewer nodes on small viewports */}
+      <div className="pointer-events-none absolute inset-0 opacity-35 md:hidden">
+        {[...Array(bokehMobile)].map((_, i) => (
           <motion.span
-            key={i}
+            key={`sm-${i}`}
             className="absolute rounded-full bg-champagne/25 blur-sm"
             style={{
               width: 3 + (i % 4) * 2,
@@ -30,6 +32,27 @@ export function HeroCinematic() {
               repeat: Infinity,
               ease: [0.45, 0, 0.55, 1],
               delay: i * 0.15,
+            }}
+          />
+        ))}
+      </div>
+      <div className="pointer-events-none absolute inset-0 hidden opacity-35 md:block">
+        {[...Array(bokehDesktop)].map((_, i) => (
+          <motion.span
+            key={`md-${i}`}
+            className="absolute rounded-full bg-champagne/25 blur-sm"
+            style={{
+              width: 3 + (i % 4) * 2,
+              height: 3 + (i % 4) * 2,
+              left: `${(i * 47) % 100}%`,
+              top: `${(i * 31) % 50}%`,
+            }}
+            animate={reduce ? {} : { opacity: [0.12, 0.45, 0.15], scale: [1, 1.35, 1] }}
+            transition={{
+              duration: 6 + (i % 3),
+              repeat: Infinity,
+              ease: [0.45, 0, 0.55, 1],
+              delay: i * 0.12,
             }}
           />
         ))}
@@ -83,7 +106,7 @@ export function HeroCinematic() {
         </div>
       </motion.div>
 
-      <div className="relative z-10 mx-auto grid min-h-[100dvh] max-w-[1400px] grid-cols-1 gap-10 px-4 pb-32 pt-28 md:grid-cols-12 md:gap-12 md:px-8 md:pb-40 md:pt-32">
+      <div className="relative z-10 mx-auto grid min-h-[100dvh] max-w-[1400px] grid-cols-1 gap-8 px-4 pb-28 pt-24 md:grid-cols-12 md:gap-12 md:px-8 md:pb-36 md:pt-28">
         <div className="md:col-span-7">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex flex-col items-center md:items-start">
             <svg width="36" height="28" viewBox="0 0 36 28" className="mb-5 text-champagne" aria-hidden>
@@ -124,32 +147,31 @@ export function HeroCinematic() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ ...springPop, delay: 0.62 }}
-                className="mt-8 max-w-[52ch] text-sm leading-relaxed text-mist md:text-base"
+                className="mt-6 max-w-[52ch] text-sm leading-relaxed text-mist md:mt-8 md:text-base"
               >
                 {SITE.hero.sub}
               </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ ...springPop, delay: 0.72 }}
-                className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start"
+                transition={{ ...springPop, delay: 0.7 }}
+                className="mt-4 text-center font-mono text-[10px] uppercase leading-relaxed tracking-[0.24em] text-mist/80 md:text-left"
+              >
+                {SITE.hero.kicker}
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ ...springPop, delay: 0.78 }}
+                className="mt-8 text-center md:text-left"
               >
                 <a
                   href="#reserve"
-                  className="inline-flex items-center gap-2 rounded-full bg-champagne px-7 py-3.5 text-sm font-semibold text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.38)] transition-transform active:scale-[0.98] hover:brightness-110"
+                  className="font-mono text-[11px] uppercase tracking-[0.26em] text-champagne underline-offset-4 transition-colors hover:text-paper hover:underline"
                 >
-                  Book the evening
-                  <span className="font-mono text-xs" aria-hidden>
-                    →
-                  </span>
+                  Reserve a date
                 </a>
-                <a
-                  href={`tel:${SITE.phoneTel}`}
-                  className="font-mono text-[11px] uppercase tracking-[0.22em] text-mist hover:text-champagne"
-                >
-                  {SITE.phoneDisplay}
-                </a>
-              </motion.div>
+              </motion.p>
             </div>
           </motion.div>
         </div>
@@ -166,9 +188,6 @@ export function HeroCinematic() {
               ))}
             </div>
           </HyperFrame>
-          <p className="mt-6 text-center font-mono text-[9px] uppercase leading-relaxed tracking-[0.28em] text-mist/70 md:text-left">
-            {SITE.hero.kicker}
-          </p>
         </div>
       </div>
     </section>

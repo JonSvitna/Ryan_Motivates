@@ -5,9 +5,7 @@ import { SITE } from "../content/site";
 const links = [
   { href: "#occasions", label: "Occasions" },
   { href: "#luxury", label: "Cabin" },
-  { href: "#fleet", label: "Fleet" },
-  { href: "#services", label: "Routes" },
-  { href: "#proof", label: "Clients" },
+  { href: "#driver", label: "Ryan" },
   { href: "#reserve", label: "Reserve" },
 ];
 
@@ -45,7 +43,7 @@ export function Nav() {
             href="#reserve"
             className="rounded-full border border-champagne/50 bg-champagne/10 px-4 py-2 text-xs font-medium text-champagne transition-transform active:scale-[0.98] hover:bg-champagne/20"
           >
-            Book
+            Reserve
           </a>
           <button
             type="button"

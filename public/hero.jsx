@@ -31,25 +31,19 @@ const Hero = () => {
       <div className="hero-content">
 
         <div className="hero-text-block">
-          <div className="hero-eyebrow">Private Chauffeur · BMW 750 · Baltimore</div>
+          <div className="hero-eyebrow">Luxury chauffeur · White BMW 750 · Baltimore</div>
           <h1 className="hero-display">
-            <span className="line-1">Arrive Like</span>
-            <em className="line-2">It Matters.</em>
+            <span className="line-1">Arrive in style.</span>
+            <em className="line-2">Every time.</em>
           </h1>
           <p className="hero-sub">
-            Airport transfers, date nights, weddings, proms, and corporate travel.
-            One driver. One car. <em>No compromises.</em>
+            Private hire — one vehicle, one chauffeur, on your schedule. Serving Baltimore and surrounding areas.
           </p>
-          <div className="hero-cta-row">
-            <button className="btn solid" onClick={() => document.getElementById('reserve').scrollIntoView({behavior:'smooth'})}>
-              <span>Reserve Your Ride</span>
-              <span className="arrow" />
+          <p className="hero-cta-solo">
+            <button type="button" className="hero-cta-link" onClick={() => document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' })}>
+              Reserve a date
             </button>
-            <a className="btn" href="tel:6672071472">
-              <span>667 · 207 · 1472</span>
-              <span className="arrow" />
-            </a>
-          </div>
+          </p>
         </div>
 
         <div className="hero-meta-strip">
@@ -60,7 +54,7 @@ const Hero = () => {
           <span className="hero-meta-divider" />
           <div className="hero-meta-item">
             <span className="l">Cabin</span>
-            <span className="v">Oxblood Leather</span>
+            <span className="v">Red leather</span>
           </div>
           <span className="hero-meta-divider" />
           <div className="hero-meta-item">

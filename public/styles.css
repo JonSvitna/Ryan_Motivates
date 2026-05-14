@@ -36,11 +36,11 @@
   --line: rgba(200, 168, 122, 0.16);
   --line-strong: rgba(200, 168, 122, 0.3);
 
-  /* Fonts — Figtree replaces Inter (Taste Skill: no Inter for body) */
+  /* Fonts — Geist Variable body/sans (taste-skill); display unchanged */
   --f-display: "Italiana", "Bodoni Moda", serif;
   --f-serif: "Cormorant Garamond", "Cormorant", serif;
-  --f-sans: "Tenor Sans", "Figtree", sans-serif;
-  --f-body: "Figtree", -apple-system, system-ui, sans-serif;
+  --f-sans: "Geist Variable", "Geist", "Tenor Sans", system-ui, sans-serif;
+  --f-body: "Geist Variable", "Geist", "Figtree", -apple-system, system-ui, sans-serif;
   --f-mono: "DM Mono", ui-monospace, monospace;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -430,8 +430,7 @@ body { line-height: 1.55; }
    ================================================================ */
 .hero {
   position: relative;
-  height: 100dvh;
-  min-height: 680px;
+  min-height: max(100dvh, 640px);
   overflow: hidden;
   background: var(--ink-0);
 }
@@ -610,6 +609,27 @@ body { line-height: 1.55; }
   margin-bottom: 40px;
 }
 .hero-sub em { color: var(--rose-bright); font-style: italic; }
+
+.hero-cta-solo {
+  margin-bottom: 36px;
+}
+.hero-cta-link {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(200, 168, 122, 0.45);
+  padding: 0 0 6px;
+  cursor: pointer;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.hero-cta-link:hover {
+  color: var(--rose-bright);
+  border-bottom-color: var(--rose-bright);
+}
 
 .hero-cta-row {
   display: flex; align-items: center; gap: 20px;
@@ -1296,6 +1316,51 @@ body { line-height: 1.55; }
   line-height: 1.5;
 }
 
+.book-call-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  width: 100%;
+  margin-bottom: 4px;
+  font-family: var(--f-sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--rose);
+  border: 1px solid var(--rose-bright);
+  border-radius: 2px;
+  transition: transform 0.2s var(--ease), filter 0.2s var(--ease);
+}
+.book-call-primary:hover {
+  filter: brightness(1.06);
+}
+.book-call-primary:active {
+  transform: scale(0.99);
+}
+
+.book-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 28px;
+}
+.book-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.book-divider-label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mute);
+  white-space: nowrap;
+}
+
 .book-card {
   position: relative;
   background: linear-gradient(180deg, rgba(28,23,20,0.7), rgba(15,13,11,0.7));
@@ -1571,6 +1636,10 @@ body { line-height: 1.55; }
   display: inline-grid; place-items: center;
   border-radius: 50%;
 }
+.cta-phone--primary {
+  margin-top: 8px;
+  margin-bottom: 96px;
+}
 
 .footer {
   max-width: 1500px;
@@ -1780,9 +1849,10 @@ image-slot {
   margin-top: 24px;
 }
 
-.occasions-grid {
+.occasions-grid,
+.occasions-grid--flyer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
 }
@@ -1963,8 +2033,8 @@ image-slot {
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   border-top: 1px solid var(--line-strong);
   display: none;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 0;
   padding: 12px 16px;
   padding-bottom: max(12px, env(safe-area-inset-bottom));
   transform: translateY(100%);
@@ -1997,6 +2067,10 @@ image-slot {
   background: var(--rose);
   color: var(--ink);
 }
+.mobile-cta-call--solo {
+  width: 100%;
+  border-radius: 2px;
+}
 
 /* ================================================================
    HERO — additional copy layout tweaks
@@ -2013,30 +2087,25 @@ image-slot {
 
 /* ============== Responsive ============== */
 @media (max-width: 1100px) {
-  .nav, .arrival, .moment, .cabin-head, .driver, .reserve, .cta, .experience, .farewell,
-  .occasions, .trust {
+  .nav, .cabin, .cabin-head, .driver, .reserve, .cta, .farewell,
+  .occasions {
     padding-left: 24px; padding-right: 24px;
   }
   .nav-links { display: none; }
-  .arrival-grid, .cabin-head, .cabin-stack, .driver-grid, .reserve-grid {
+  .cabin-head, .cabin-stack, .driver-grid, .reserve-grid {
     grid-template-columns: 1fr; gap: 48px;
   }
   .cabin-text { position: static; height: auto; padding: 60px 0; }
   .cabin-text .stage { height: auto; }
   .cabin-text .stage > div { position: static; opacity: 1; transform: none; margin-bottom: 40px; }
-  .driver-stats { grid-template-columns: repeat(2, 1fr); }
   .footer { grid-template-columns: 1fr 1fr; }
-  .occasions-head { grid-template-columns: 1fr; gap: 32px; }
+  .occasions-head { grid-template-columns: 1fr; gap: 32px; margin-bottom: 64px; }
   .occasions-grid { grid-template-columns: repeat(2, 1fr); }
   .occasions .lede { max-width: 100%; }
-  .trust-grid { grid-template-columns: repeat(2, 1fr); }
-  .trust-cta { flex-direction: column; align-items: flex-start; gap: 28px; }
   .occ-item { min-height: 160px; padding: 36px 28px; }
 }
 @media (max-width: 600px) {
   .occasions-grid { grid-template-columns: 1fr; }
-  .trust-grid { grid-template-columns: 1fr; }
-  .trust-item { padding: 36px 24px; }
   .occ-item { min-height: auto; }
   /* Keep padding on mobile for readable spacing */
   body { padding-bottom: 80px; }

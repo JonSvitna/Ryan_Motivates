@@ -9,9 +9,9 @@ export function LuxuryExperienceSection() {
   const inView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
-    <section id="luxury" ref={ref} className="bg-paper py-24 text-ink md:py-32">
+    <section id="luxury" ref={ref} className="bg-paper py-16 text-ink md:py-24">
       <div className="mx-auto max-w-[1400px] px-4 md:px-8">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-12">
           <motion.div
             className="lg:col-span-5"
             initial={{ opacity: 0, x: -20 }}
@@ -20,7 +20,7 @@ export function LuxuryExperienceSection() {
           >
             <p className="font-mono text-[10px] uppercase tracking-[0.36em] text-champagne-dim">Inside the frame</p>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">{SITE.flyer.luxuryTitle}</h2>
-            <ul className="mt-10 space-y-4">
+            <ul className="mt-8 space-y-3 md:mt-10 md:space-y-4">
               {SITE.flyer.luxuryBullets.map((line, i) => (
                 <motion.li
                   key={line}
@@ -48,21 +48,51 @@ export function LuxuryExperienceSection() {
                 whileHover={{ scale: 1.01 }}
                 transition={springPop}
               >
-                <img src={SITE.flyer.interiors[0].src} alt={SITE.flyer.interiors[0].alt} className="h-full w-full object-cover" loading="lazy" />
+                <img
+                  src={SITE.flyer.interiors[0].src}
+                  alt={SITE.flyer.interiors[0].alt}
+                  className="h-full w-full object-cover"
+                  style={
+                    "objectPosition" in SITE.flyer.interiors[0] && SITE.flyer.interiors[0].objectPosition
+                      ? { objectPosition: SITE.flyer.interiors[0].objectPosition }
+                      : undefined
+                  }
+                  loading="lazy"
+                />
               </motion.div>
               <motion.div
                 className="relative col-span-1 overflow-hidden rounded-[1.5rem] border border-slate-200/90 bg-white shadow-[0_20px_60px_-40px_rgba(15,23,42,0.35)] md:col-span-2"
                 whileHover={{ scale: 1.02 }}
                 transition={springPop}
               >
-                <img src={SITE.flyer.interiors[1].src} alt={SITE.flyer.interiors[1].alt} className="h-full w-full object-cover" loading="lazy" />
+                <img
+                  src={SITE.flyer.interiors[1].src}
+                  alt={SITE.flyer.interiors[1].alt}
+                  className="h-full w-full object-cover"
+                  style={
+                    "objectPosition" in SITE.flyer.interiors[1] && SITE.flyer.interiors[1].objectPosition
+                      ? { objectPosition: SITE.flyer.interiors[1].objectPosition }
+                      : undefined
+                  }
+                  loading="lazy"
+                />
               </motion.div>
               <motion.div
                 className="relative col-span-1 overflow-hidden rounded-[1.5rem] border border-slate-200/90 bg-white shadow-[0_20px_60px_-40px_rgba(15,23,42,0.35)] md:col-span-2"
                 whileHover={{ scale: 1.02 }}
                 transition={springPop}
               >
-                <img src={SITE.flyer.interiors[2].src} alt={SITE.flyer.interiors[2].alt} className="h-full w-full object-cover" loading="lazy" />
+                <img
+                  src={SITE.flyer.interiors[2].src}
+                  alt={SITE.flyer.interiors[2].alt}
+                  className="h-full w-full object-cover"
+                  style={
+                    "objectPosition" in SITE.flyer.interiors[2] && SITE.flyer.interiors[2].objectPosition
+                      ? { objectPosition: SITE.flyer.interiors[2].objectPosition }
+                      : undefined
+                  }
+                  loading="lazy"
+                />
               </motion.div>
             </div>
           </motion.div>

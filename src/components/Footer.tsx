@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-ink text-paper/85">
       <KineticMarquee />
-      <div className="py-16 md:py-20">
+      <div className="py-12 md:py-16">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-12 px-4 md:flex-row md:justify-between md:px-8">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-champagne">{SITE.brand}</p>
@@ -29,18 +29,13 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a className="text-mist hover:text-paper" href="#fleet">
-                    Fleet
+                  <a className="text-mist hover:text-paper" href="#luxury">
+                    Cabin
                   </a>
                 </li>
                 <li>
-                  <a className="text-mist hover:text-paper" href="#services">
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a className="text-mist hover:text-paper" href="#proof">
-                    Clients
+                  <a className="text-mist hover:text-paper" href="#driver">
+                    Ryan
                   </a>
                 </li>
                 <li>

@@ -64,8 +64,8 @@ const Nav = () => {
       </div>
       <div className="nav-links">
         <button className="nav-link" onClick={go('occasions')}>Occasions</button>
-        <button className="nav-link" onClick={go('cabin')}>The Cabin</button>
-        <button className="nav-link" onClick={go('driver')}>The Driver</button>
+        <button className="nav-link" onClick={go('cabin')}>Cabin</button>
+        <button className="nav-link" onClick={go('driver')}>Ryan</button>
         <button className="nav-link" onClick={go('cta')}>Contact</button>
       </div>
       <button className="nav-cta" onClick={go('reserve')}>
@@ -84,13 +84,7 @@ const MobileCTA = () => {
   }, []);
   return (
     <div className={"mobile-cta-bar " + (visible ? 'visible' : '')}>
-      <a className="mobile-cta-call" href="tel:6672071472">Call Ryan</a>
-      <button
-        className="mobile-cta-reserve"
-        onClick={() => document.getElementById('reserve').scrollIntoView({behavior:'smooth'})}
-      >
-        Reserve
-      </button>
+      <a className="mobile-cta-call mobile-cta-call--solo" href="tel:+16672071472">Call or text · 667 · 207 · 1472</a>
     </div>
   );
 };
@@ -154,14 +148,8 @@ const App = () => {
       {t.ribbon && <div className="ribbon" />}
       <Nav />
       <Hero />
-      <Showcase />
-      <Arrival />
       <Occasions />
-      <Nameplate />
-      <Moment />
       <Cabin />
-      <Experience />
-      <Trust />
       <Driver />
       <Reserve />
       <CTAFooter />

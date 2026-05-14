@@ -32,18 +32,20 @@ export function ReserveForm() {
   };
 
   return (
-    <section id="reserve" ref={ref} className="border-t border-ink/10 bg-paper py-24 text-ink md:py-32">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-4 md:grid-cols-2 md:gap-20 md:px-8">
+    <section id="reserve" ref={ref} className="border-t border-ink/10 bg-paper py-16 text-ink md:py-24">
+      <div className="mx-auto grid max-w-[1400px] gap-10 px-4 md:grid-cols-2 md:gap-14 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-champagne-dim">Reserve</p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight md:text-5xl">Send the brief. Ryan closes the loop.</h2>
-          <p className="mt-6 max-w-[52ch] text-slate-600">
-            No app hand-off. You text or call {SITE.phoneDisplay}, or drop details here — you get a human confirmation, usually inside an hour for new
-            requests.
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight md:mt-4 md:text-4xl lg:text-5xl">
+            Your comfort, your time — same thread from quote to curb.
+          </h2>
+          <p className="mt-5 max-w-[52ch] text-slate-600 md:mt-6">
+            Call or text {SITE.phoneDisplay} for the fastest answer. If you prefer, send pickup, timing, and occasion here — {SITE.driver} confirms personally,
+            usually within an hour for new requests.
           </p>
           <ul className="mt-10 space-y-4 font-mono text-[11px] uppercase tracking-[0.2em] text-slate-500">
             <li className="flex gap-3 border-l border-champagne/60 pl-4">01 — Pickup, timing, dress code for the cabin.</li>
@@ -59,10 +61,22 @@ export function ReserveForm() {
           initial={{ opacity: 0, y: 22 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-[2rem] border border-slate-200/90 bg-white p-8 shadow-[0_30px_90px_-48px_rgba(15,23,42,0.45)] md:p-10"
+          className="rounded-[2rem] border border-slate-200/90 bg-white p-6 shadow-[0_30px_90px_-48px_rgba(15,23,42,0.45)] md:p-10"
         >
           {!submitted ? (
-            <form onSubmit={submit} className="flex flex-col gap-6">
+            <>
+              <a
+                href={`tel:${SITE.phoneTel}`}
+                className="flex min-h-[52px] w-full items-center justify-center rounded-2xl border border-champagne/50 bg-ink px-5 py-4 text-center text-sm font-semibold text-paper shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform active:scale-[0.98] hover:bg-slate-900"
+              >
+                Call or text · {SITE.phoneDisplay}
+              </a>
+              <div className="my-6 flex items-center gap-3" aria-hidden>
+                <span className="h-px flex-1 bg-slate-200" />
+                <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500">Or send details</span>
+                <span className="h-px flex-1 bg-slate-200" />
+              </div>
+              <form onSubmit={submit} className="flex flex-col gap-6">
               <div className="flex flex-wrap gap-2">
                 {SITE.reserve.tabs.map((t) => (
                   <button
@@ -185,18 +199,19 @@ export function ReserveForm() {
 
               <button
                 type="submit"
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform active:scale-[0.98] hover:bg-slate-900"
+                className="mt-2 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-paper shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition-transform active:scale-[0.98] hover:bg-slate-900"
               >
-                Send request
+                Send details
                 <span className="font-mono text-xs">→</span>
               </button>
               <p className="text-center text-[11px] text-slate-500">
-                Prefer voice?{" "}
+                Prefer to talk it through?{" "}
                 <a className="font-medium text-ink underline-offset-2 hover:underline" href={`tel:${SITE.phoneTel}`}>
-                  {SITE.phoneDisplay}
+                  Tap to call
                 </a>
               </p>
-            </form>
+              </form>
+            </>
           ) : (
             <div className="flex flex-col items-start gap-4 py-2">
               <div className="rounded-full border border-champagne/40 bg-champagne/10 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.24em] text-champagne-dim">
