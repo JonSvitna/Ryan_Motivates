@@ -45,10 +45,10 @@ const Moment = () => {
     <section className="moment" data-screen-label="03 Moment">
       <div className="moment-text">
         <p className="moment-quote">
-          "There are two kinds of nights —
-          <em>the ones you survive,</em>
-          and the ones you remember.
-          We exist for the second."
+          "True luxury is not spectacle —
+          <em>it is anticipation.</em>
+          A cabin prepared before you arrive, discretion without being asked,
+          and the quiet certainty that your standard is ours."
         </p>
         <div className="moment-attrib">— A Note From The Driver</div>
       </div>

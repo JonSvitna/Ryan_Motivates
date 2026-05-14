@@ -1,0 +1,8 @@
+{
+  "name": "ryan-motivates",
+  "private": true,
+  "description": "Static marketing site — no compile step; assets served from repo root.",
+  "scripts": {
+    "build": "node -e \"console.log('Static site: no build output directory change.')\""
+  }
+}
