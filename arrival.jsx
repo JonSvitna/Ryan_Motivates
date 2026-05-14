@@ -2,7 +2,7 @@
 const Arrival = () => {
   return (
     <section className="arrival" id="arrival" data-screen-label="02 Arrival">
-      <div className="arrival-grid">
+      <div className="arrival-grid" data-reveal>
         <div className="arrival-img">
           <div className="image-shell image-shell--arrival">
             <image-slot
@@ -20,20 +20,20 @@ const Arrival = () => {
             Chapter One — The Arrival
           </div>
           <h2 className="display">
-            The white BMW is <em>already waiting.</em>
+            The car is there<em> before you need it.</em>
           </h2>
           <p className="lede">
-            Outside the venue, idling quiet. Pearl-white BMW 750 against the dark.
-            Engine warm. Cabin tempered. Phone connected.
-            Ryan, standing at the door, has been there for six minutes.
+            Outside your door, idling quiet. Pearl-white BMW 750 against the dark.
+            Engine warm. Cabin ready. Ryan, standing at the door — six minutes early.
+            Whether it's the airport at 5am or the gala at midnight.
           </p>
           <p className="arrival-poem">
-            You don't open doors anymore.<br/>
-            You don't watch clocks anymore.<br/>
+            You don't open your own door anymore.<br/>
+            You don't watch the clock anymore.<br/>
             You don't <em>wait</em> anymore.
           </p>
           <button className="btn" onClick={() => document.getElementById('reserve').scrollIntoView({behavior:'smooth'})}>
-            <span>Begin the Evening</span>
+            <span>Reserve Your Ride</span>
             <span className="arrow" />
           </button>
         </div>

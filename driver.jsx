@@ -2,7 +2,7 @@
 const Driver = () => {
   return (
     <section className="driver" id="driver" data-screen-label="06 Driver">
-      <div className="driver-grid">
+      <div className="driver-grid" data-reveal>
         <div className="driver-portrait">
           <div className="image-shell image-shell--portrait">
             <image-slot

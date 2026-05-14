@@ -1,39 +1,40 @@
 /* ================================================================
    NIGHT SERIES — Luxury chauffeur
-   Black ice · Mercury light · Editorial restraint (Taste Skill–aligned)
+   Satin black · Champagne gold · Editorial restraint (Taste Skill–aligned)
    ================================================================ */
 
 :root {
-  /* Base ink — cooler OLED black */
-  --ink-0: #020203;
-  --ink: #060708;
-  --ink-1: #0a0b0d;
-  --ink-2: #0f1114;
-  --ink-3: #14181c;
+  /* Base ink — warm OLED black */
+  --ink-0: #050403;
+  --ink: #080705;
+  --ink-1: #0d0b08;
+  --ink-2: #120f0b;
+  --ink-3: #18140f;
 
   /* Wine / depth (restrained) */
-  --wine: #0d0e12;
-  --wine-2: #12141a;
-  --amethyst: #7a8aa0;
-  --amethyst-deep: #2a3140;
+  --wine: #0e0c09;
+  --wine-2: #141009;
+  --amethyst: #8a7a60;
+  --amethyst-deep: #2e2618;
 
-  /* Ice edge (accent channel — still named --rose in tokens for compatibility) */
+  /* Ice — kept for palette switcher */
   --ice: #a8b4c4;
   --ice-bright: #dce4ee;
   --ice-deep: #4e5866;
 
-  --rose: #a8b4c4;
-  --rose-bright: #dce4ee;
-  --rose-deep: #4e5866;
-  --rose-shadow: #2c343f;
+  /* Champagne gold — default accent channel */
+  --rose: #C8A87A;
+  --rose-bright: #E8CFA0;
+  --rose-deep: #9C7A52;
+  --rose-shadow: #3A2E1C;
 
-  /* Bone / pearl — Ralph Lauren warmth on cool ground */
-  --pearl: #ebe6dc;
-  --pearl-dim: #b8b0a4;
-  --mute: #6a6f78;
-  --mute-2: #3d4249;
-  --line: rgba(168, 180, 196, 0.16);
-  --line-strong: rgba(168, 180, 196, 0.3);
+  /* Bone / pearl — warm ivory */
+  --pearl: #ece7dc;
+  --pearl-dim: #bab29e;
+  --mute: #706858;
+  --mute-2: #3e3628;
+  --line: rgba(200, 168, 122, 0.16);
+  --line-strong: rgba(200, 168, 122, 0.3);
 
   /* Fonts — Figtree replaces Inter (Taste Skill: no Inter for body) */
   --f-display: "Italiana", "Bodoni Moda", serif;
@@ -73,20 +74,20 @@ body { line-height: 1.55; }
   pointer-events: none;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(180, 198, 218, 0.55) 22%,
-    rgba(220, 228, 238, 0.75) 50%,
-    rgba(160, 178, 198, 0.5) 78%,
+    rgba(200, 168, 122, 0.55) 22%,
+    rgba(232, 207, 160, 0.80) 50%,
+    rgba(180, 148, 100, 0.55) 78%,
     transparent 100%);
   background-size: 200% 100%;
-  opacity: 0.5;
+  opacity: 0.55;
   animation: ribbonShift 14s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
 .ribbon::after {
   content: "";
   position: absolute; inset: -8px 0 -8px 0;
   background: inherit;
-  filter: blur(10px);
-  opacity: 0.6;
+  filter: blur(12px);
+  opacity: 0.55;
 }
 @keyframes ribbonShift {
   0%, 100% { background-position: 0% 0; }
@@ -308,10 +309,10 @@ body { line-height: 1.55; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(120, 140, 165, 0.14), transparent 72%),
-    radial-gradient(ellipse 70% 50% at 15% 25%, rgba(60, 72, 92, 0.22), transparent 58%),
-    radial-gradient(ellipse 50% 45% at 92% 65%, rgba(200, 210, 225, 0.06), transparent 62%),
-    linear-gradient(180deg, #020203 0%, #060708 42%, #0a0c10 100%);
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(160, 120, 70, 0.14), transparent 72%),
+    radial-gradient(ellipse 70% 50% at 15% 25%, rgba(80, 60, 35, 0.22), transparent 58%),
+    radial-gradient(ellipse 50% 45% at 92% 65%, rgba(200, 180, 130, 0.07), transparent 62%),
+    linear-gradient(180deg, #050403 0%, #080705 42%, #0d0a06 100%);
 }
 .hero-noise {
   position: absolute; inset: 0;
@@ -324,14 +325,14 @@ body { line-height: 1.55; }
   position: absolute;
   bottom: -10%; left: -10%;
   width: 60%; height: 80%;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200, 210, 225, 0.12), transparent 65%);
-  filter: blur(40px);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200, 168, 100, 0.10), transparent 65%);
+  filter: blur(48px);
   animation: drift 18s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
 .hero-glow.b {
   bottom: 20%; left: auto; right: -10%;
   width: 50%; height: 60%;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(130, 150, 175, 0.16), transparent 65%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(160, 120, 70, 0.14), transparent 65%);
   animation-delay: -9s;
 }
 @keyframes drift {
@@ -339,13 +340,13 @@ body { line-height: 1.55; }
   50% { transform: translate(8%, -4%); }
 }
 
-/* sweeping headlight — cool silver */
+/* sweeping headlight — warm gold */
 .hero-beam {
   position: absolute;
   top: 30%; left: -30%;
   width: 60%; height: 70%;
-  background: radial-gradient(ellipse 30% 50% at 0% 50%, rgba(230, 236, 245, 0.14), transparent 70%);
-  filter: blur(30px);
+  background: radial-gradient(ellipse 30% 50% at 0% 50%, rgba(232, 200, 140, 0.13), transparent 70%);
+  filter: blur(32px);
   animation: beam 16s cubic-bezier(0.32, 0.72, 0, 1) infinite;
   transform-origin: 0% 50%;
 }
@@ -412,8 +413,8 @@ body { line-height: 1.55; }
   content: ""; position: absolute;
   left: 10%; right: 10%; bottom: 8%;
   height: 14%;
-  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(232,201,176,0.18), transparent 70%);
-  filter: blur(18px);
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(200,165,100,0.20), transparent 70%);
+  filter: blur(22px);
   z-index: -1;
 }
 
@@ -676,8 +677,8 @@ body { line-height: 1.55; }
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(154,110,158,0.28), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 30% 80%, rgba(200,161,138,0.14), transparent 70%);
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(160, 120, 60, 0.20), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 30% 80%, rgba(200, 168, 122, 0.12), transparent 70%);
 }
 .moment-text {
   position: relative; z-index: 2;
@@ -901,8 +902,8 @@ body { line-height: 1.55; }
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(130, 150, 175, 0.14), transparent 70%),
-    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(200, 210, 225, 0.06), transparent 70%);
+    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(200, 168, 122, 0.10), transparent 70%),
+    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(160, 120, 70, 0.07), transparent 70%);
 }
 .driver-grid {
   position: relative; z-index: 2;
@@ -1019,8 +1020,8 @@ body { line-height: 1.55; }
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(154,110,158,0.15), transparent 70%),
-    radial-gradient(ellipse 60% 50% at 20% 70%, rgba(200,161,138,0.10), transparent 70%);
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200, 168, 122, 0.10), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 70%, rgba(160, 120, 70, 0.08), transparent 70%);
 }
 .reserve-grid {
   position: relative; z-index: 2;
@@ -1274,8 +1275,8 @@ body { line-height: 1.55; }
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 85% 38% at 50% 0%, rgba(180, 198, 218, 0.12), transparent 72%),
-    radial-gradient(ellipse 55% 35% at 50% 100%, rgba(80, 92, 110, 0.12), transparent 70%);
+    radial-gradient(ellipse 85% 38% at 50% 0%, rgba(200, 168, 122, 0.12), transparent 72%),
+    radial-gradient(ellipse 55% 35% at 50% 100%, rgba(160, 120, 70, 0.10), transparent 70%);
 }
 .cta-inner { position: relative; z-index: 2; }
 .cta-display {
@@ -1427,8 +1428,8 @@ body { line-height: 1.55; }
   transform: translateX(-50%);
   width: min(88vw, 520px);
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(210, 220, 235, 0.55), transparent);
-  box-shadow: 0 0 40px rgba(200, 215, 235, 0.25);
+  background: linear-gradient(90deg, transparent, rgba(232, 207, 160, 0.60), transparent);
+  box-shadow: 0 0 40px rgba(200, 168, 122, 0.30);
 }
 .farewell-kicker {
   font-family: var(--f-mono);
@@ -1487,16 +1488,297 @@ body { line-height: 1.55; }
   letter-spacing: 0.32em;
 }
 
-/* image-slot defaults — black ice station */
+/* image-slot defaults — warm graphite station */
 image-slot {
-  --is-placeholder-bg: rgba(8, 10, 14, 0.72);
-  --is-placeholder-fg: rgba(168, 180, 196, 0.45);
-  --is-border: rgba(168, 180, 196, 0.2);
+  --is-placeholder-bg: rgba(12, 10, 7, 0.72);
+  --is-placeholder-fg: rgba(200, 168, 122, 0.40);
+  --is-border: rgba(200, 168, 122, 0.18);
+}
+
+/* ================================================================
+   SCROLL REVEAL — cinematic entrance system
+   ================================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  transition:
+    opacity 0.95s var(--ease-slow),
+    transform 0.95s var(--ease-slow);
+  transition-delay: var(--delay, 0ms);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ================================================================
+   OCCASIONS — editorial service grid
+   ================================================================ */
+.occasions {
+  position: relative;
+  padding: 180px 56px;
+  background: var(--ink-1);
+  overflow: hidden;
+}
+.occasions::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong) 30%, var(--line-strong) 70%, transparent);
+}
+.occasions-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.occasions-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 96px;
+}
+.occasions-head .chapter-mark { margin-bottom: 28px; }
+.occasions-display {
+  font-size: clamp(52px, 6vw, 100px);
+  margin-top: 24px;
+}
+
+.occasions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.occ-item {
+  padding: 48px 40px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  cursor: default;
+  transition: background 0.5s var(--ease);
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.occ-item::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--rose);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.65s var(--ease);
+}
+.occ-item:hover::after { transform: scaleX(1); }
+.occ-item:hover { background: rgba(200, 168, 122, 0.04); }
+.occ-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--rose);
+  margin-bottom: 24px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease);
+  transition-delay: 0.1s;
+}
+.occ-item:hover .occ-line { transform: scaleX(1); }
+
+.occ-num {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--rose);
+  margin-bottom: 20px;
+}
+.occ-title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(22px, 2vw, 32px);
+  letter-spacing: -0.01em;
+  color: var(--pearl);
+  line-height: 1.1;
+  transition: color 0.3s var(--ease), font-style 0.3s var(--ease);
+  flex: 1;
+}
+.occ-item:hover .occ-title {
+  color: var(--rose-bright);
+  font-style: italic;
+}
+.occ-desc {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--pearl-dim);
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+  margin-top: 16px;
+}
+.occ-item:hover .occ-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================================
+   TRUST — why ride with Ryan
+   ================================================================ */
+.trust {
+  position: relative;
+  padding: 200px 56px;
+  background: var(--wine-2);
+  overflow: hidden;
+}
+.trust::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 50%, rgba(200, 168, 122, 0.08), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 30%, rgba(160, 120, 70, 0.06), transparent 70%);
+}
+.trust-inner {
+  position: relative; z-index: 2;
+  max-width: 1600px; margin: 0 auto;
+}
+.trust-head { margin-bottom: 96px; }
+.trust-display {
+  font-size: clamp(56px, 6.5vw, 110px);
+  margin-top: 28px;
+  max-width: 18ch;
+}
+.trust-lede {
+  margin-top: 40px;
+  max-width: 42ch;
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.trust-item {
+  display: flex;
+  gap: 28px;
+  padding: 52px 44px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: background 0.4s var(--ease);
+}
+.trust-item:hover { background: rgba(200, 168, 122, 0.04); }
+.trust-n {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--rose);
+  flex-shrink: 0;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+.trust-t {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 28px);
+  letter-spacing: -0.01em;
+  color: var(--pearl);
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+.trust-d {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--pearl-dim);
+  line-height: 1.65;
+}
+.trust-cta {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin-top: 96px;
+  padding-top: 56px;
+  border-top: 1px solid var(--line);
+}
+.trust-phone {
+  font-family: var(--f-display);
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 48px);
+  color: var(--rose);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.4s var(--ease);
+}
+.trust-phone:hover { color: var(--rose-bright); }
+
+/* ================================================================
+   MOBILE STICKY CTA
+   ================================================================ */
+.mobile-cta-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 80;
+  background: rgba(8, 7, 5, 0.97);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-top: 1px solid var(--line-strong);
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  transition: transform 0.6s var(--ease);
+}
+.mobile-cta-bar.visible { transform: translateY(0); }
+@media (max-width: 768px) {
+  .mobile-cta-bar { display: grid; }
+}
+.mobile-cta-call, .mobile-cta-reserve {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-family: var(--f-sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+.mobile-cta-call {
+  background: transparent;
+  color: var(--rose);
+  border: 1px solid var(--rose);
+}
+.mobile-cta-reserve {
+  background: var(--rose);
+  color: var(--ink);
+}
+
+/* ================================================================
+   HERO — additional copy layout tweaks
+   ================================================================ */
+.hero-tag-sub {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-top: 14px;
+  line-height: 1.8;
 }
 
 /* ============== Responsive ============== */
 @media (max-width: 1100px) {
-  .nav, .arrival, .moment, .cabin-head, .driver, .reserve, .cta, .experience, .farewell {
+  .nav, .arrival, .moment, .cabin-head, .driver, .reserve, .cta, .experience, .farewell,
+  .occasions, .trust {
     padding-left: 24px; padding-right: 24px;
   }
   .nav-links { display: none; }
@@ -1508,4 +1790,18 @@ image-slot {
   .cabin-text .stage > div { position: static; opacity: 1; transform: none; margin-bottom: 40px; }
   .driver-stats { grid-template-columns: repeat(2, 1fr); }
   .footer { grid-template-columns: 1fr 1fr; }
+  .occasions-head { grid-template-columns: 1fr; gap: 32px; }
+  .occasions-grid { grid-template-columns: repeat(2, 1fr); }
+  .occasions .lede { max-width: 100%; }
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .trust-cta { flex-direction: column; align-items: flex-start; gap: 28px; }
+  .occ-item { min-height: 160px; padding: 36px 28px; }
+}
+@media (max-width: 600px) {
+  .occasions-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .trust-item { padding: 36px 24px; }
+  .occ-item { min-height: auto; }
+  /* Keep padding on mobile for readable spacing */
+  body { padding-bottom: 80px; }
 }

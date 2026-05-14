@@ -2,8 +2,8 @@
 const { useState, useEffect } = React;
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "ice",
-  "ambientGlow": "mercury",
+  "accent": "champagne",
+  "ambientGlow": "cognac",
   "ribbon": true
 }/*EDITMODE-END*/;
 
@@ -63,8 +63,8 @@ const Nav = () => {
         </span>
       </div>
       <div className="nav-links">
+        <button className="nav-link" onClick={go('occasions')}>Occasions</button>
         <button className="nav-link" onClick={go('cabin')}>The Cabin</button>
-        <button className="nav-link" onClick={go('experience')}>The Detail</button>
         <button className="nav-link" onClick={go('driver')}>The Driver</button>
         <button className="nav-link" onClick={go('cta')}>Contact</button>
       </div>
@@ -75,8 +75,40 @@ const Nav = () => {
   );
 };
 
+const MobileCTA = () => {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.85);
+    window.addEventListener('scroll', onScroll, {passive:true});
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <div className={"mobile-cta-bar " + (visible ? 'visible' : '')}>
+      <a className="mobile-cta-call" href="tel:6672071472">Call Ryan</a>
+      <button
+        className="mobile-cta-reserve"
+        onClick={() => document.getElementById('reserve').scrollIntoView({behavior:'smooth'})}
+      >
+        Reserve
+      </button>
+    </div>
+  );
+};
+
 const App = () => {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  // Scroll reveal — cinematic entrance system
+  useEffect(() => {
+    const els = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   // Apply accent palette
   useEffect(() => {
@@ -123,13 +155,16 @@ const App = () => {
       <Nav />
       <Hero />
       <Arrival />
+      <Occasions />
       <Nameplate />
       <Moment />
       <Cabin />
       <Experience />
+      <Trust />
       <Driver />
       <Reserve />
       <CTAFooter />
+      <MobileCTA />
 
       <TweaksPanel title="Tweaks">
         <TweakSection label="Accent">
@@ -137,9 +172,9 @@ const App = () => {
             label="Palette"
             value={t.accent}
             options={[
+              {value:'champagne', label:'Champagne'},
               {value:'ice', label:'Black Ice'},
               {value:'rose', label:'Rose'},
-              {value:'champagne', label:'Champagne'},
               {value:'platinum', label:'Platinum'},
               {value:'copper', label:'Copper'},
             ]}
@@ -151,10 +186,10 @@ const App = () => {
             label="Glow"
             value={t.ambientGlow}
             options={[
+              {value:'cognac',   label:'Cognac'},
               {value:'mercury', label:'Mercury'},
               {value:'amethyst', label:'Amethyst'},
               {value:'oxblood',  label:'Oxblood'},
-              {value:'cognac',   label:'Cognac'},
               {value:'obsidian', label:'Obsidian'},
             ]}
             onChange={v => setTweak('ambientGlow', v)}

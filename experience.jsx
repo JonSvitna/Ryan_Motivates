@@ -12,7 +12,7 @@ const Experience = () => {
   return (
     <section className="experience" id="experience" data-screen-label="05 Experience">
       <div className="experience-grid">
-        <div className="experience-head">
+        <div className="experience-head" data-reveal>
           <div className="chapter-mark">
             <span className="rune">iii</span>
             Chapter Three — The Detail
