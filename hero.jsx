@@ -7,8 +7,8 @@ const Hero = () => {
       <div className="hero-vehicle">
         <image-slot
           id="hero-car-fullbleed"
-          src="/assets/bmw-hero-v2.png"
-          placeholder="White BMW 750 — autumn road, rear three-quarter · drag to fill"
+          src="/assets/bmw-hero-clean.png"
+          placeholder="White BMW 750 · drag to fill"
           shape="rect"
           fit="cover"
         ></image-slot>

@@ -69,19 +69,19 @@ const Cabin = () => {
         </div>
         <div className="cabin-images">
           <div className="cabin-img" data-idx="0">
-            <image-slot id="cabin-rear-v2" src="/assets/cabin-rear.png" placeholder="Red leather rear cabin" shape="rect" />
+            <image-slot id="cabin-rear-v2" src="/assets/cabin-rear-bench.png" placeholder="BMW rear bench — red leather" shape="rect" />
             <span className="num">01 — Rear cabin</span>
             <span className="ttl">Red leather, quilted.</span>
           </div>
           <div className="cabin-img" data-idx="1">
-            <image-slot id="cabin-dash-v2" src="/assets/cabin-dash.png" placeholder="BMW dashboard · ambient light" shape="rect" />
-            <span className="num">02 — Cockpit</span>
-            <span className="ttl">Control, refined.</span>
+            <image-slot id="cabin-dash-v2" src="/assets/cabin-front.png" placeholder="BMW front cabin — red leather seats" shape="rect" />
+            <span className="num">02 — Front cabin</span>
+            <span className="ttl">Every seat, considered.</span>
           </div>
           <div className="cabin-img" data-idx="2">
-            <image-slot id="cabin-seat-v2" src="/assets/cabin-rear.png" placeholder="Cabin detail · trim" shape="rect" position="78% 42%" />
-            <span className="num">03 — Detail</span>
-            <span className="ttl">Stitching and trim.</span>
+            <image-slot id="cabin-seat-v2" src="/assets/cabin-front-view.png" placeholder="BMW interior — both front seats" shape="rect" />
+            <span className="num">03 — The interior</span>
+            <span className="ttl">Oxblood. All of it.</span>
           </div>
         </div>
       </div>
