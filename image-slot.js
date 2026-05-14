@@ -141,6 +141,18 @@
   // raw upload. Longest side is capped at 2× the slot's rendered width
   // (retina) and at MAX_DIM. WebP keeps alpha and is ~10× smaller than PNG
   // for photos, so there's no need for per-image format picking.
+  /** Resolve author `src` so assets load from site root (e.g. Vercel + cleanUrls). */
+  function resolveMediaUrl(attr) {
+    if (!attr) return '';
+    if (/^(?:data:|https?:|\/\/)/i.test(attr)) return attr;
+    if (attr.startsWith('/')) return attr;
+    try {
+      return new URL(attr, document.baseURI).href;
+    } catch (_) {
+      return attr;
+    }
+  }
+
   async function toDataUrl(file, targetW) {
     const bitmap = await createImageBitmap(file);
     try {
@@ -616,9 +628,10 @@
       // Toggle via style.display — the [hidden] attribute alone loses to
       // the display:flex / display:block rules in the stylesheet above.
       if (url) {
-        if (this._img.getAttribute('src') !== url) {
-          this._img.src = url;
-          this._ghost.src = url;
+        const resolved = resolveMediaUrl(url);
+        if (this._img.getAttribute('src') !== resolved) {
+          this._img.src = resolved;
+          this._ghost.src = resolved;
         }
         this._img.style.display = 'block';
         this._empty.style.display = 'none';

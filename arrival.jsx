@@ -4,12 +4,14 @@ const Arrival = () => {
     <section className="arrival" id="arrival" data-screen-label="02 Arrival">
       <div className="arrival-grid">
         <div className="arrival-img">
-          <image-slot
-            id="arrival-img-v2"
-            src="assets/cabin-rear.png"
-            placeholder="Door opening · red interior reveal"
-            shape="rect"
-          ></image-slot>
+          <div className="image-shell image-shell--arrival">
+            <image-slot
+              id="arrival-img-v2"
+              src="/assets/cabin-rear.png"
+              placeholder="Door opening · red interior reveal"
+              shape="rect"
+            ></image-slot>
+          </div>
           <span className="tag">I.</span>
         </div>
         <div className="arrival-text">
@@ -127,17 +129,17 @@ const Cabin = () => {
         </div>
         <div className="cabin-images">
           <div className="cabin-img" data-idx="0">
-            <image-slot id="cabin-rear-v2" src="assets/cabin-rear.png" placeholder="Red leather rear cabin" shape="rect"></image-slot>
+            <image-slot id="cabin-rear-v2" src="/assets/cabin-rear.png" placeholder="Red leather rear cabin" shape="rect"></image-slot>
             <span className="num">01 ── Texture</span>
             <span className="ttl">Oxblood, hand-stitched.</span>
           </div>
           <div className="cabin-img" data-idx="1">
-            <image-slot id="cabin-dash-v2" src="assets/cabin-dash.png" placeholder="BMW dashboard · red interior" shape="rect"></image-slot>
+            <image-slot id="cabin-dash-v2" src="/assets/cabin-dash.png" placeholder="BMW dashboard · red interior" shape="rect"></image-slot>
             <span className="num">02 ── Cockpit</span>
             <span className="ttl">Control, refined.</span>
           </div>
           <div className="cabin-img" data-idx="2">
-            <image-slot id="cabin-seat-v2" src="assets/cabin-rear.png" placeholder="Rear cabin detail · stitched seat" shape="rect"></image-slot>
+            <image-slot id="cabin-seat-v2" src="/assets/cabin-rear.png" placeholder="Rear cabin detail · stitched seat" shape="rect"></image-slot>
             <span className="num">03 ── Silence</span>
             <span className="ttl">Sealed quiet.</span>
           </div>

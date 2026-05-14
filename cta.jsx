@@ -1,20 +1,63 @@
-// CTA / Footer
+// CTA / Footer + cold-close farewell (Taste Skill: editorial exit, IO reveal)
+const Farewell = () => {
+  const ref = React.useRef(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setVisible(true);
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={'farewell ' + (visible ? 'farewell--visible' : '')}
+      aria-hidden={!visible}
+    >
+      <div className="farewell-ice" aria-hidden="true" />
+      <p className="farewell-kicker">The impression that remains</p>
+      <p className="farewell-line">
+        Not mileage logged in an app — <em>the silence after the door closes,</em>
+        when the city sounds like someone else\u2019s concern.
+      </p>
+      <p className="farewell-sub">
+        Precision reserved for guests who expect the same from a vehicle as from a tailor.
+      </p>
+      <div className="farewell-sig">
+        <span className="farewell-mark">Night Series</span>
+        <span className="farewell-divider" />
+        <span className="farewell-locale">Baltimore · Private Chauffeur</span>
+      </div>
+    </div>
+  );
+};
+
 const CTAFooter = () => {
-  const goReserve = () => document.getElementById('reserve').scrollIntoView({behavior:'smooth'});
+  const goReserve = () => document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' });
   return (
     <section className="cta" id="cta" data-screen-label="08 Contact">
       <div className="cta-inner">
-        <div className="chapter-mark" style={{justifyContent:'center', display:'inline-flex', marginBottom: 40}}>
+        <div className="chapter-mark" style={{ justifyContent: 'center', display: 'inline-flex', marginBottom: 40 }}>
           <span className="rune">vi</span>
           Chapter Six — The Invitation
         </div>
         <h2 className="cta-display">
-          Arrive in
-          <em>style.</em>
+          When the evening
+          <em>asks for more.</em>
         </h2>
         <p className="cta-tag">
-          One sedan, one driver, one evening at a time. When you're ready,
-          we're already on our way.
+          The same discretion you expect at the front of a house — translated to the curb,
+          the cabin, and the road in between.
         </p>
         <div className="cta-row">
           <button className="btn solid" onClick={goReserve}>
@@ -25,8 +68,8 @@ const CTAFooter = () => {
         </div>
         <a className="cta-phone" href="tel:6672071472">
           <span className="ic">
-            <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
-              <path d="M9 4 L13 4 L15 10 L12 13 C13.5 16 16 18.5 19 20 L22 17 L28 19 L28 23 C28 25 26 27 24 27 C13 27 5 19 5 8 C5 6 7 4 9 4 Z" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M9 4 L13 4 L15 10 L12 13 C13.5 16 16 18.5 19 20 L22 17 L28 19 L28 23 C28 25 26 27 24 27 C13 27 5 19 5 8 C5 6 7 4 9 4 Z" stroke="currentColor" strokeWidth="1.1" fill="none" />
             </svg>
           </span>
           <span>667 · 207 · 1472</span>
@@ -56,16 +99,18 @@ const CTAFooter = () => {
           <div className="footer-col">
             <h5>Direct</h5>
             <a href="tel:6672071472">667 · 207 · 1472</a>
-            <p>Call or text, day or night</p>
+            <p>Call or text, by appointment</p>
             <p>24 hours, by request</p>
           </div>
         </footer>
         <div className="footer-bottom">
           <span>© 2026 Ryan J. Luxury Chauffeur</span>
-          <em>Reliable · Respectful · Professional</em>
+          <em>Composed · Discreet · Exact</em>
           <span>Baltimore · After Dusk</span>
         </div>
       </div>
+
+      <Farewell />
     </section>
   );
 };

@@ -10,18 +10,20 @@ const Hero = () => {
 
       {/* car silhouette */}
       <div className="hero-stage">
-        <image-slot
-          id="hero-car-v2"
-          src="assets/bmw-hero-v2.png"
-          placeholder="White BMW 750 · night city"
-          shape="rect"
-          fit="contain"
-        ></image-slot>
+        <div className="image-shell image-shell--hero">
+          <image-slot
+            id="hero-car-v2"
+            src="/assets/bmw-hero-v2.png"
+            placeholder="White BMW 750 · black ice"
+            shape="rect"
+            fit="contain"
+          ></image-slot>
+        </div>
       </div>
 
       <div className="hero-content">
         <div>
-          <div className="hero-eyebrow">Night Series · After Dark Chauffeur</div>
+          <div className="hero-eyebrow">Private Chauffeur · BMW 750</div>
           <h1 className="hero-display">
             An Evening,
             <em>Reserved.</em>

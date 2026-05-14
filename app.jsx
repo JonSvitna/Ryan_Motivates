@@ -2,12 +2,17 @@
 const { useState, useEffect } = React;
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "rose",
-  "ambientGlow": "amethyst",
+  "accent": "ice",
+  "ambientGlow": "mercury",
   "ribbon": true
 }/*EDITMODE-END*/;
 
 const ACCENT_PALETTES = {
+  ice: {
+    rose: '#A8B4C4',
+    bright: '#D8E0EB',
+    deep: '#5A6575',
+  },
   rose: {
     rose: '#C8A18A',
     bright: '#E8C9B0',
@@ -31,6 +36,7 @@ const ACCENT_PALETTES = {
 };
 
 const GLOWS = {
+  mercury: { a: 'rgba(148, 168, 188, 0.24)', b: 'rgba(255, 255, 255, 0.05)' },
   amethyst: { a: 'rgba(154,110,158,0.28)', b: 'rgba(200,161,138,0.10)' },
   oxblood:  { a: 'rgba(120,30,45,0.30)',   b: 'rgba(200,161,138,0.10)' },
   cognac:   { a: 'rgba(160,100,60,0.25)',  b: 'rgba(200,161,138,0.10)' },
@@ -74,7 +80,7 @@ const App = () => {
 
   // Apply accent palette
   useEffect(() => {
-    const p = ACCENT_PALETTES[t.accent] || ACCENT_PALETTES.rose;
+    const p = ACCENT_PALETTES[t.accent] || ACCENT_PALETTES.ice;
     const root = document.documentElement;
     root.style.setProperty('--rose', p.rose);
     root.style.setProperty('--rose-bright', p.bright);
@@ -89,7 +95,7 @@ const App = () => {
 
   // Apply ambient glow
   useEffect(() => {
-    const g = GLOWS[t.ambientGlow] || GLOWS.amethyst;
+    const g = GLOWS[t.ambientGlow] || GLOWS.mercury;
     const sheet = document.getElementById('__tweak-ambient') ||
       (() => { const s=document.createElement('style'); s.id='__tweak-ambient'; document.head.appendChild(s); return s; })();
     sheet.textContent = `
@@ -131,6 +137,7 @@ const App = () => {
             label="Palette"
             value={t.accent}
             options={[
+              {value:'ice', label:'Black Ice'},
               {value:'rose', label:'Rose'},
               {value:'champagne', label:'Champagne'},
               {value:'platinum', label:'Platinum'},
@@ -144,6 +151,7 @@ const App = () => {
             label="Glow"
             value={t.ambientGlow}
             options={[
+              {value:'mercury', label:'Mercury'},
               {value:'amethyst', label:'Amethyst'},
               {value:'oxblood',  label:'Oxblood'},
               {value:'cognac',   label:'Cognac'},

@@ -4,12 +4,14 @@ const Driver = () => {
     <section className="driver" id="driver" data-screen-label="06 Driver">
       <div className="driver-grid">
         <div className="driver-portrait">
-          <image-slot
-            id="driver-ryan-v2"
-            src="assets/ryan-portrait.png"
-            placeholder="Ryan portrait"
-            shape="rect"
-          ></image-slot>
+          <div className="image-shell image-shell--portrait">
+            <image-slot
+              id="driver-ryan-v2"
+              src="/assets/ryan-portrait.png"
+              placeholder="Ryan portrait"
+              shape="rect"
+            ></image-slot>
+          </div>
           <span className="frame" />
         </div>
         <div className="driver-quote">

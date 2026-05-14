@@ -1,45 +1,50 @@
 /* ================================================================
    NIGHT SERIES — Luxury chauffeur
-   Obsidian · Rose gold · Amethyst glow · Editorial intimacy
+   Black ice · Mercury light · Editorial restraint (Taste Skill–aligned)
    ================================================================ */
 
 :root {
-  /* Base ink */
-  --ink-0: #060504;
-  --ink: #0A0908;
-  --ink-1: #0F0D0B;
-  --ink-2: #15110F;
-  --ink-3: #1C1714;
+  /* Base ink — cooler OLED black */
+  --ink-0: #020203;
+  --ink: #060708;
+  --ink-1: #0a0b0d;
+  --ink-2: #0f1114;
+  --ink-3: #14181c;
 
-  /* Wine / amethyst shadow */
-  --wine: #170F18;
-  --wine-2: #1F1320;
-  --amethyst: #9A6E9E;
-  --amethyst-deep: #4A2D52;
+  /* Wine / depth (restrained) */
+  --wine: #0d0e12;
+  --wine-2: #12141a;
+  --amethyst: #7a8aa0;
+  --amethyst-deep: #2a3140;
 
-  /* Rose gold (the new "gold") */
-  --rose: #C8A18A;
-  --rose-bright: #E8C9B0;
-  --rose-deep: #8C6E5A;
-  --rose-shadow: #5A3F30;
+  /* Ice edge (accent channel — still named --rose in tokens for compatibility) */
+  --ice: #a8b4c4;
+  --ice-bright: #dce4ee;
+  --ice-deep: #4e5866;
 
-  /* Bone / pearl */
-  --pearl: #EFE9DF;
-  --pearl-dim: #C8C0B2;
-  --mute: #6B645A;
-  --mute-2: #3E382F;
-  --line: rgba(200, 161, 138, 0.14);
-  --line-strong: rgba(200, 161, 138, 0.28);
+  --rose: #a8b4c4;
+  --rose-bright: #dce4ee;
+  --rose-deep: #4e5866;
+  --rose-shadow: #2c343f;
 
-  /* Fonts */
+  /* Bone / pearl — Ralph Lauren warmth on cool ground */
+  --pearl: #ebe6dc;
+  --pearl-dim: #b8b0a4;
+  --mute: #6a6f78;
+  --mute-2: #3d4249;
+  --line: rgba(168, 180, 196, 0.16);
+  --line-strong: rgba(168, 180, 196, 0.3);
+
+  /* Fonts — Figtree replaces Inter (Taste Skill: no Inter for body) */
   --f-display: "Italiana", "Bodoni Moda", serif;
   --f-serif: "Cormorant Garamond", "Cormorant", serif;
-  --f-sans: "Tenor Sans", "Inter", sans-serif;
-  --f-body: "Inter", -apple-system, sans-serif;
+  --f-sans: "Tenor Sans", "Figtree", sans-serif;
+  --f-body: "Figtree", -apple-system, system-ui, sans-serif;
   --f-mono: "DM Mono", ui-monospace, monospace;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-slow: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,13 +73,13 @@ body { line-height: 1.55; }
   pointer-events: none;
   background: linear-gradient(90deg,
     transparent 0%,
-    var(--amethyst) 25%,
-    var(--rose-bright) 50%,
-    var(--amethyst) 75%,
+    rgba(180, 198, 218, 0.55) 22%,
+    rgba(220, 228, 238, 0.75) 50%,
+    rgba(160, 178, 198, 0.5) 78%,
     transparent 100%);
   background-size: 200% 100%;
-  opacity: 0.55;
-  animation: ribbonShift 12s ease-in-out infinite;
+  opacity: 0.5;
+  animation: ribbonShift 14s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
 .ribbon::after {
   content: "";
@@ -303,10 +308,10 @@ body { line-height: 1.55; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(154,110,158,0.22), transparent 70%),
-    radial-gradient(ellipse 100% 60% at 20% 30%, rgba(74,45,82,0.28), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 90% 70%, rgba(200,161,138,0.10), transparent 60%),
-    linear-gradient(180deg, #050405 0%, #0a0908 50%, #110d10 100%);
+    radial-gradient(ellipse 90% 55% at 50% 100%, rgba(120, 140, 165, 0.14), transparent 72%),
+    radial-gradient(ellipse 70% 50% at 15% 25%, rgba(60, 72, 92, 0.22), transparent 58%),
+    radial-gradient(ellipse 50% 45% at 92% 65%, rgba(200, 210, 225, 0.06), transparent 62%),
+    linear-gradient(180deg, #020203 0%, #060708 42%, #0a0c10 100%);
 }
 .hero-noise {
   position: absolute; inset: 0;
@@ -319,14 +324,14 @@ body { line-height: 1.55; }
   position: absolute;
   bottom: -10%; left: -10%;
   width: 60%; height: 80%;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,161,138,0.18), transparent 65%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200, 210, 225, 0.12), transparent 65%);
   filter: blur(40px);
-  animation: drift 18s ease-in-out infinite;
+  animation: drift 18s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
 .hero-glow.b {
   bottom: 20%; left: auto; right: -10%;
   width: 50%; height: 60%;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(154,110,158,0.22), transparent 65%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(130, 150, 175, 0.16), transparent 65%);
   animation-delay: -9s;
 }
 @keyframes drift {
@@ -334,14 +339,14 @@ body { line-height: 1.55; }
   50% { transform: translate(8%, -4%); }
 }
 
-/* sweeping headlight */
+/* sweeping headlight — cool silver */
 .hero-beam {
   position: absolute;
   top: 30%; left: -30%;
   width: 60%; height: 70%;
-  background: radial-gradient(ellipse 30% 50% at 0% 50%, rgba(232,201,176,0.20), transparent 70%);
+  background: radial-gradient(ellipse 30% 50% at 0% 50%, rgba(230, 236, 245, 0.14), transparent 70%);
   filter: blur(30px);
-  animation: beam 16s ease-in-out infinite;
+  animation: beam 16s cubic-bezier(0.32, 0.72, 0, 1) infinite;
   transform-origin: 0% 50%;
 }
 @keyframes beam {
@@ -359,8 +364,49 @@ body { line-height: 1.55; }
   z-index: 2;
 }
 .hero-stage image-slot {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Double-bezel frame (Taste Skill: nested enclosure) */
+.image-shell {
+  position: relative;
+  box-sizing: border-box;
+  padding: 11px;
+  border-radius: 26px;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.09),
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.image-shell::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 20px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+.image-shell--hero {
   width: min(96%, 1400px);
   height: 100%;
+  max-height: 56vh;
+}
+.image-shell--arrival,
+.image-shell--portrait {
+  width: 100%;
+  height: 100%;
+}
+.image-shell image-slot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
 }
 .hero-stage::before {
   content: ""; position: absolute;
@@ -506,6 +552,7 @@ body { line-height: 1.55; }
   position: relative;
   aspect-ratio: 4/5;
 }
+.arrival-img .image-shell,
 .arrival-img image-slot { width: 100%; height: 100%; }
 .arrival-img::after {
   content: "";
@@ -854,8 +901,8 @@ body { line-height: 1.55; }
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(154,110,158,0.20), transparent 70%),
-    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(200,161,138,0.10), transparent 70%);
+    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(130, 150, 175, 0.14), transparent 70%),
+    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(200, 210, 225, 0.06), transparent 70%);
 }
 .driver-grid {
   position: relative; z-index: 2;
@@ -869,12 +916,13 @@ body { line-height: 1.55; }
   position: relative;
   aspect-ratio: 4/5;
 }
+.driver-portrait .image-shell,
 .driver-portrait image-slot { width: 100%; height: 100%; }
 .driver-portrait::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(23,15,24,0.6) 100%);
+  background: linear-gradient(180deg, transparent 45%, rgba(4, 6, 10, 0.72) 100%);
   pointer-events: none;
 }
 .driver-portrait .frame {
@@ -1226,8 +1274,8 @@ body { line-height: 1.55; }
   content: "";
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(200,161,138,0.18), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(154,110,158,0.10), transparent 70%);
+    radial-gradient(ellipse 85% 38% at 50% 0%, rgba(180, 198, 218, 0.12), transparent 72%),
+    radial-gradient(ellipse 55% 35% at 50% 100%, rgba(80, 92, 110, 0.12), transparent 70%);
 }
 .cta-inner { position: relative; z-index: 2; }
 .cta-display {
@@ -1350,16 +1398,105 @@ body { line-height: 1.55; }
   text-transform: none;
 }
 
-/* image-slot defaults — nighttime palette */
+/* ================================================================
+   FAREWELL — cold close (Lexus-tier exit memory)
+   ================================================================ */
+.farewell {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 100px 56px 140px;
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  filter: blur(6px);
+  transition:
+    opacity 1s var(--ease-out-expo),
+    transform 1s var(--ease-out-expo),
+    filter 1s var(--ease-out-expo);
+}
+.farewell--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+.farewell-ice {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: min(88vw, 520px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(210, 220, 235, 0.55), transparent);
+  box-shadow: 0 0 40px rgba(200, 215, 235, 0.25);
+}
+.farewell-kicker {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 28px;
+  margin-top: 48px;
+}
+.farewell-line {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.45;
+  color: var(--pearl);
+  font-weight: 400;
+  margin-bottom: 22px;
+}
+.farewell-line em {
+  color: var(--rose-bright);
+  font-style: italic;
+}
+.farewell-sub {
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--pearl-dim);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  letter-spacing: 0.01em;
+}
+.farewell-sig {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 18px 28px;
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.farewell-mark {
+  color: var(--rose);
+  letter-spacing: 0.28em;
+}
+.farewell-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
+.farewell-locale {
+  letter-spacing: 0.32em;
+}
+
+/* image-slot defaults — black ice station */
 image-slot {
-  --is-placeholder-bg: rgba(20, 16, 18, 0.65);
-  --is-placeholder-fg: rgba(200, 161, 138, 0.5);
-  --is-border: rgba(200, 161, 138, 0.18);
+  --is-placeholder-bg: rgba(8, 10, 14, 0.72);
+  --is-placeholder-fg: rgba(168, 180, 196, 0.45);
+  --is-border: rgba(168, 180, 196, 0.2);
 }
 
 /* ============== Responsive ============== */
 @media (max-width: 1100px) {
-  .nav, .arrival, .moment, .cabin-head, .driver, .reserve, .cta, .experience {
+  .nav, .arrival, .moment, .cabin-head, .driver, .reserve, .cta, .experience, .farewell {
     padding-left: 24px; padding-right: 24px;
   }
   .nav-links { display: none; }
