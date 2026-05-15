@@ -1,109 +1,124 @@
-// CTA / Footer + cold-close farewell (Taste Skill: editorial exit, IO reveal)
-const Farewell = () => {
-  const ref = React.useRef(null);
-  const [visible, setVisible] = React.useState(false);
-
-  React.useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setVisible(true);
-        });
-      },
-      { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
+// BaltimoreNight — atmospheric city section
+const BaltimoreNight = () => {
   return (
-    <div
-      ref={ref}
-      className={'farewell ' + (visible ? 'farewell--visible' : '')}
-      aria-hidden={!visible}
-    >
-      <div className="farewell-ice" aria-hidden="true" />
-      <p className="farewell-kicker">The impression that remains</p>
-      <p className="farewell-line">
-        Not mileage logged in an app — <em>the silence after the door closes,</em>
-        when the city sounds like someone else&#x2019;s concern.
-      </p>
-      <p className="farewell-sub">
-        Precision reserved for guests who expect the same from a vehicle as from a tailor.
-      </p>
-      <div className="farewell-sig">
-        <span className="farewell-mark">Night Series</span>
-        <span className="farewell-divider" />
-        <span className="farewell-locale">Baltimore · Private Chauffeur</span>
+    <section className="baltimore-night" id="baltimore">
+      {/* Background image — subtle, desaturated */}
+      <div className="baltimore-night-bg">
+        {/*
+          Swap: /assets/bmw-exterior.png for night city/wet street atmosphere
+          or leave dark if no suitable city photo is available
+        */}
+        <img
+          src="/assets/bmw-exterior.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        />
       </div>
-    </div>
-  );
-};
+      <div className="baltimore-night-overlay" />
 
-const CTAFooter = () => {
-  return (
-    <section className="cta" id="cta" data-screen-label="08 Contact">
-      <div className="cta-inner">
-        <div className="chapter-mark" style={{ justifyContent: 'center', display: 'inline-flex', marginBottom: 40 }}>
-          <span className="rune">vi</span>
-          Chapter Six — The Invitation
-        </div>
-        <h2 className="cta-display">
-          When the evening
-          <em>asks for more.</em>
-        </h2>
-        <p className="cta-tag">
-          When you are ready, one number reaches the person who stages the car — not a queue.
-        </p>
-        <a className="cta-phone cta-phone--primary" href="tel:+16672071472">
-          <span className="ic">
-            <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <path d="M9 4 L13 4 L15 10 L12 13 C13.5 16 16 18.5 19 20 L22 17 L28 19 L28 23 C28 25 26 27 24 27 C13 27 5 19 5 8 C5 6 7 4 9 4 Z" stroke="currentColor" strokeWidth="1.1" fill="none" />
-            </svg>
-          </span>
-          <span>667 · 207 · 1472</span>
-        </a>
+      <div className="baltimore-night-inner">
 
-        <footer className="footer">
-          <div className="footer-col footer-brand">
-            <div className="mono">R.J.</div>
-            <p>Night Series Chauffeur</p>
-            <p>BMW 750 · Pearl white · Red leather</p>
-            <p>Baltimore, MD</p>
-          </div>
-          <div className="footer-col">
-            <h5>Service</h5>
-            <a href="#reserve">Reserve</a>
-            <a href="#occasions">Occasions</a>
-            <a href="#cabin">Cabin</a>
-            <a href="#driver">Ryan</a>
-          </div>
-          <div className="footer-col">
-            <h5>Coverage</h5>
-            <p>Baltimore Metro</p>
-            <p>Annapolis · Columbia</p>
-            <p>BWI · DCA · IAD</p>
-            <p>Washington, D.C.</p>
-          </div>
-          <div className="footer-col">
-            <h5>Direct</h5>
-            <a href="tel:+16672071472">667 · 207 · 1472</a>
-            <p>Call or text, by appointment</p>
-            <p>24 hours, by request</p>
-          </div>
-        </footer>
-        <div className="footer-bottom">
-          <span>© 2026 Ryan J. Luxury Chauffeur</span>
-          <em>Composed · Discreet · Exact</em>
-          <span>Baltimore · After Dusk</span>
+        {/* Left — headline + copy */}
+        <div data-reveal>
+          <p className="baltimore-night-eyebrow">Service Area</p>
+          <h2 className="baltimore-night-hl">
+            BALTIMORE,<br />
+            AFTER DARK.
+          </h2>
+          <p className="baltimore-night-copy">
+            Harbor East. Inner Harbor. Fells Point. Downtown.
+            Wherever the night takes you, arrive with intention.
+          </p>
         </div>
+
+        {/* Right — area list */}
+        <div className="baltimore-night-right" data-reveal data-delay="2">
+          <p className="baltimore-area-label">We serve</p>
+          <ul className="baltimore-area-list">
+            <li>Baltimore Metro</li>
+            <li>Annapolis</li>
+            <li>Columbia</li>
+            <li>BWI · DCA · IAD</li>
+            <li>Washington, D.C.</li>
+          </ul>
+        </div>
+
       </div>
-
-      <Farewell />
     </section>
   );
 };
 
-window.CTAFooter = CTAFooter;
+// BookingCTA — luxury concierge close
+const BookingCTA = () => {
+  return (
+    <section className="booking-cta" id="book">
+      <div className="booking-cta-inner">
+
+        <p className="booking-cta-eyebrow" data-reveal>Night Series · Baltimore</p>
+
+        <h2 className="booking-cta-hl" data-reveal data-delay="1">
+          Ready when<br />the night is.
+        </h2>
+
+        <p className="booking-cta-sub" data-reveal data-delay="2">
+          Call or text Ryan J. to reserve your BMW 750 chauffeur experience.
+        </p>
+
+        <a
+          className="booking-cta-phone"
+          href="tel:+16672071472"
+          data-reveal
+          data-delay="2"
+        >
+          667 · 207 · 1472
+        </a>
+
+        <div className="booking-cta-actions" data-reveal data-delay="3">
+          <a href="tel:+16672071472" className="btn-primary">Book Your Night</a>
+          <a href="sms:+16672071472" className="btn-ghost">Text us instead</a>
+        </div>
+
+        <p className="booking-cta-locale" data-reveal data-delay="4">
+          Serving Baltimore &amp; surrounding areas
+        </p>
+
+      </div>
+    </section>
+  );
+};
+
+// SiteFooter — minimal, quiet
+const SiteFooter = () => {
+  return (
+    <footer className="site-footer">
+      <div className="site-footer-inner">
+        <div>
+          <p className="site-footer-brand">Night Series</p>
+          <p className="site-footer-tagline">
+            Private BMW 750 chauffeur — Baltimore, BWI, DCA, IAD, and Washington.
+          </p>
+        </div>
+        <div className="site-footer-right">
+          <a className="site-footer-phone" href="tel:+16672071472">
+            667 · 207 · 1472
+          </a>
+          <p className="site-footer-legal">
+            © {new Date().getFullYear()} Ryan J. · Private hire · Baltimore, MD
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Legacy aliases
+window.BaltimoreNight = BaltimoreNight;
+window.BookingCTA = BookingCTA;
+window.SiteFooter = SiteFooter;
+window.CTAFooter = () => React.createElement(React.Fragment, null,
+  React.createElement(BaltimoreNight),
+  React.createElement(BookingCTA),
+  React.createElement(SiteFooter)
+);
+window.Farewell = () => null;
