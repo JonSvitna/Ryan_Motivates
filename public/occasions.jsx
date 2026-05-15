@@ -33,26 +33,24 @@ const MOMENTS = [
     title: 'PROM & FORMAL NIGHTS',
     sub: 'Make the entrance unforgettable.',
     // Swap: /assets/bmw-exterior.png for best exterior night crop
-    img: '/assets/bmw-exterior.png',
-    alt: 'White BMW 750 — prom arrival',
+    img: '/assets/editorial-waterfront.jpg',
+    alt: 'Couple at Baltimore waterfront — prom arrival',
     pos: 'center center',
   },
   {
     num: '02',
     title: 'DATE NIGHTS & ANNIVERSARIES',
     sub: 'Set the tone before dinner starts.',
-    // Swap: /assets/cabin-rear-bench.png or /assets/cabin-seats.png
-    img: '/assets/cabin-rear-bench.png',
-    alt: 'Red leather interior — intimate evening',
+    img: '/assets/editorial-water-club.jpg',
+    alt: 'Chauffeur at The Water Club Baltimore — formal night',
     pos: 'center 40%',
   },
   {
     num: '03',
     title: 'EXECUTIVE & AIRPORT TRAVEL',
     sub: 'Quiet. Private. Precise.',
-    // Swap: /assets/cabin-dash.png for cockpit precision shot
-    img: '/assets/cabin-dash.png',
-    alt: 'BMW 750 cockpit — executive travel',
+    img: '/assets/editorial-airport.jpg',
+    alt: 'BMW 750 — corporate airport transfer',
     pos: 'center 55%',
   },
 ];

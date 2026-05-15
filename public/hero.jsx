@@ -1,4 +1,49 @@
 // Hero — Full viewport · BMW editorial · Left-aligned campaign composition
+const { useState, useEffect } = React;
+
+const CinematicIntro = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const alreadySeen = typeof sessionStorage !== 'undefined' && sessionStorage.getItem('intro-seen');
+  if (isMobile || alreadySeen) return null;
+
+  const [visible, setVisible] = React.useState(true);
+  const [fading, setFading] = React.useState(false);
+
+  const dismiss = React.useCallback(() => {
+    setFading(true);
+    setTimeout(() => {
+      setVisible(false);
+      if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('intro-seen', '1');
+    }, 900);
+  }, []);
+
+  React.useEffect(() => {
+    if (!visible) return;
+    const onScroll = () => dismiss();
+    window.addEventListener('scroll', onScroll, { once: true, passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [visible, dismiss]);
+
+  if (!visible) return null;
+
+  return (
+    <div className={'cinematic-intro' + (fading ? ' fading' : '')}>
+      <video
+        src="/assets/videos/isolated_car_shot.mp4"
+        autoPlay
+        muted
+        playsInline
+        onEnded={() => setTimeout(dismiss, 800)}
+      />
+      <div className="cinematic-intro-overlay" />
+      <div className="cinematic-intro-brand">NIGHT SERIES</div>
+      <button className="cinematic-intro-enter" onClick={dismiss}>Enter ↓</button>
+    </div>
+  );
+};
+
+window.CinematicIntro = CinematicIntro;
+
 const Hero = () => {
   return (
     <section className="hero" id="hero">
