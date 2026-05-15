@@ -1,92 +1,43 @@
-// Cabin — flyer spine: luxury experience + three cabin frames
-const Cabin = () => {
-  const [active, setActive] = React.useState(0);
-  const ref = React.useRef(null);
-
-  React.useEffect(() => {
-    const images = ref.current?.querySelectorAll('.cabin-img');
-    if (!images) return;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          setActive(parseInt(e.target.dataset.idx, 10));
-        }
-      });
-    }, { rootMargin: '-28% 0% -28% 0%', threshold: 0 });
-    images.forEach((img) => io.observe(img));
-    return () => io.disconnect();
-  }, []);
-
-  const stages = [
-    {
-      e: 'Texture · I',
-      t: '750 ',
-      em: 'red leather interior.',
-      d: 'Quilted hide and hand-finished seams — you feel the cabin before you read the spec sheet.',
-    },
-    {
-      e: 'Light · II',
-      t: 'Ambient cabin,',
-      em: ' tuned to your night.',
-      d: 'Dimmed presets so the space matches the dress code and the city outside.',
-    },
-    {
-      e: 'Silence · III',
-      t: 'A near',
-      em: ' soundless ride.',
-      d: 'Acoustic glass and sealed doors — the road stays outside unless you choose otherwise.',
-    },
-  ];
-
+// InteriorExperience — split editorial layout · red leather · no bullet lists
+const InteriorExperience = () => {
   return (
-    <section className="cabin" id="cabin" data-screen-label="Cabin">
-      <div className="cabin-head">
-        <div>
-          <div className="chapter-mark">
-            <span className="rune">ii</span>
-            The luxury experience
-          </div>
-          <h2 className="display">
-            Step inside. <em>The world does not follow.</em>
-          </h2>
-        </div>
-        <p className="lede">
-          Checklist straight from the print piece — same vehicle, same cabin, same standard.
-        </p>
-      </div>
+    <section className="interior-exp" id="interior">
+      <div className="interior-exp-inner">
 
-      <div className="cabin-stack" ref={ref}>
-        <div className="cabin-text">
-          <div className="stage">
-            {stages.map((s, i) => (
-              <div key={i} className={i === active ? 'active' : ''}>
-                <div className="label" style={{ color: 'var(--rose)' }}>{s.e}</div>
-                <h3>{s.t}<em>{s.em}</em></h3>
-                <p>{s.d}</p>
-              </div>
-            ))}
-          </div>
+        {/* Left — text */}
+        <div data-reveal>
+          <p className="interior-exp-eyebrow">The Cabin</p>
+          <h2 className="interior-exp-hl">
+            INSIDE,<br />
+            EVERYTHING<br />
+            SLOWS DOWN.
+          </h2>
+          <p className="interior-exp-copy">
+            Red leather. Ambient lighting. Heated comfort. Private space.
+            The kind of quiet that changes the night.
+          </p>
+          <a href="#book" className="btn-primary">Book Your Night</a>
         </div>
-        <div className="cabin-images">
-          <div className="cabin-img" data-idx="0">
-            <image-slot id="cabin-rear-v2" src="/assets/cabin-rear-bench.png" placeholder="BMW rear bench — red leather" shape="rect" />
-            <span className="num">01 — Rear cabin</span>
-            <span className="ttl">Red leather, quilted.</span>
-          </div>
-          <div className="cabin-img" data-idx="1">
-            <image-slot id="cabin-dash-v2" src="/assets/cabin-front.png" placeholder="BMW front cabin — red leather seats" shape="rect" />
-            <span className="num">02 — Front cabin</span>
-            <span className="ttl">Every seat, considered.</span>
-          </div>
-          <div className="cabin-img" data-idx="2">
-            <image-slot id="cabin-seat-v2" src="/assets/cabin-front-view.png" placeholder="BMW interior — both front seats" shape="rect" />
-            <span className="num">03 — The interior</span>
-            <span className="ttl">Oxblood. All of it.</span>
-          </div>
+
+        {/* Right — image */}
+        <div className="interior-exp-img" data-reveal data-delay="2">
+          {/*
+            Swap: /assets/cabin-rear-wide.png — red leather rear bench
+            or /assets/cabin-seats.png for tighter seat detail crop
+          */}
+          <img
+            src="/assets/cabin-rear.png"
+            alt="BMW 750 red leather interior — rear cabin"
+            loading="lazy"
+          />
         </div>
+
       </div>
     </section>
   );
 };
 
-window.Cabin = Cabin;
+window.InteriorExperience = InteriorExperience;
+// Legacy aliases — keep these so app.jsx loads cleanly
+window.Cabin = InteriorExperience;
+window.CabinVideo = () => null;

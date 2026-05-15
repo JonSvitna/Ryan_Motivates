@@ -1,77 +1,47 @@
-// Hero — full-bleed vehicle background · WE-style automotive editorial
+// Hero — Full viewport · BMW editorial · Left-aligned campaign composition
 const Hero = () => {
   return (
-    <section className="hero" id="hero" data-screen-label="01 Hero">
+    <section className="hero" id="hero">
+      {/* Atmosphere */}
+      <div className="hero-bg" />
+      <div className="hero-grad-left" />
+      <div className="hero-grad-top" />
+      <div className="hero-grad-bottom" />
 
-      {/* ── Layer 1: Full-bleed vehicle photo (drop your image here) ── */}
-      <div className="hero-vehicle">
-        <image-slot
-          id="hero-car-fullbleed"
-          src="/assets/bmw-hero-clean.png"
-          placeholder="White BMW 750 · drag to fill"
-          shape="rect"
-          fit="cover"
-        ></image-slot>
+      {/*
+        BMW 750 hero image — wet street, night exterior
+        Swap src to /assets/bmw-hero-v2.png or /assets/bmw-hero.png
+      */}
+      <div className="hero-car">
+        <img
+          src="/assets/bmw-hero-v2.png"
+          alt="White BMW 750 — Baltimore night arrival"
+          loading="eager"
+          decoding="async"
+        />
       </div>
 
-      {/* ── Layer 2: Cinematic gradient overlay ── */}
-      <div className="hero-overlay" />
+      {/* Editorial content — left-aligned */}
+      <div className="hero-body">
+        <p className="hero-eyebrow">Baltimore Private Chauffeur</p>
 
-      {/* ── Layer 3: Atmospheric depth ── */}
-      <div className="hero-rain" aria-hidden="true" />
-      <div className="hero-fog"  aria-hidden="true" />
-      <div className="hero-glow" />
-      <div className="hero-glow b" />
-      <div className="hero-beam" />
-      <div className="hero-beam b" />
-      <div className="hero-noise" />
-      <div className="hero-vignette" aria-hidden="true" />
+        <h1 className="hero-hl">
+          <span>THE NIGHT</span>
+          <span>BEGINS</span>
+          <span>BEFORE</span>
+          <span>YOU ARRIVE.</span>
+        </h1>
 
-      {/* ── Layer 4: All copy — lower section ── */}
-      <div className="hero-content">
+        <p className="hero-sub">
+          A private BMW 750 experience for nights that deserve more than a ride.
+        </p>
 
-        <div className="hero-text-block">
-          <div className="hero-eyebrow">Luxury chauffeur · White BMW 750 · Baltimore</div>
-          <h1 className="hero-display">
-            <span className="line-1">Arrive in style.</span>
-            <em className="line-2">Every time.</em>
-          </h1>
-          <p className="hero-sub">
-            Private hire — one vehicle, one chauffeur, on your schedule. Serving Baltimore and surrounding areas.
-          </p>
-          <p className="hero-cta-solo">
-            <button type="button" className="hero-cta-link" onClick={() => document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' })}>
-              Reserve a date
-            </button>
-          </p>
+        <div className="hero-actions">
+          <a href="#book" className="btn-primary">Book Your Night</a>
+          <a href="sms:+16672071472" className="btn-ghost">Text 667 · 207 · 1472</a>
         </div>
 
-        <div className="hero-meta-strip">
-          <div className="hero-meta-item">
-            <span className="l">Vehicle</span>
-            <span className="v">BMW 750</span>
-          </div>
-          <span className="hero-meta-divider" />
-          <div className="hero-meta-item">
-            <span className="l">Cabin</span>
-            <span className="v">Red leather</span>
-          </div>
-          <span className="hero-meta-divider" />
-          <div className="hero-meta-item">
-            <span className="l">Driver</span>
-            <span className="v">Ryan J.</span>
-          </div>
-          <span className="hero-meta-divider" />
-          <div className="hero-meta-item">
-            <span className="l">Coverage</span>
-            <span className="v">Baltimore · D.C. · BWI</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="hero-scroll">
-        <span>Scroll</span>
-        <span className="stroke" />
+        <p className="hero-trust">Private · Professional · On Time</p>
       </div>
     </section>
   );
