@@ -19,17 +19,11 @@ const InteriorExperience = () => {
           <a href="#book" className="btn-primary">Book Your Night</a>
         </div>
 
-        {/* Right — image */}
+        {/* Right — cabin video */}
         <div className="interior-exp-img" data-reveal data-delay="2">
-          {/*
-            Swap: /assets/cabin-rear-wide.png — red leather rear bench
-            or /assets/cabin-seats.png for tighter seat detail crop
-          */}
-          <img
-            src="/assets/cabin-rear.png"
-            alt="BMW 750 red leather interior — rear cabin"
-            loading="lazy"
-          />
+          <video autoPlay muted loop playsInline>
+            <source src="/assets/videos/inside_car_View.mp4" type="video/mp4" />
+          </video>
         </div>
 
       </div>

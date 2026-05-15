@@ -561,13 +561,15 @@ body::after {
   aspect-ratio: 3/4;
   overflow: hidden;
 }
-.interior-exp-img img {
+.interior-exp-img img,
+.interior-exp-img video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 9s var(--ease-slow);
 }
-.interior-exp-img:hover img {
+.interior-exp-img:hover img,
+.interior-exp-img:hover video {
   transform: scale(1.04);
 }
 .interior-exp-img::after {
