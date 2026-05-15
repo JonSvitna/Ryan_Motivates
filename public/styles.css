@@ -55,21 +55,6 @@ a   { color: inherit; text-decoration: none; }
 button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
 ::selection { background: rgba(196,164,107,0.28); color: var(--bg); }
 
-/* ── Hero Video ── */
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  z-index: 0;
-  opacity: 0.55;
-}
-@media (max-width: 767px) {
-  .hero-video { display: none; }
-}
-
 /* ── Ribbon ── */
 .ribbon {
   position: fixed;
@@ -297,11 +282,10 @@ body::after {
   z-index: 1;
   pointer-events: none;
 }
-.hero-car img {
+.hero-car video {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 50px 100px rgba(0,0,0,0.75));
 }
 /* Content */
 .hero-body {

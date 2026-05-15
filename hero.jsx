@@ -2,33 +2,22 @@
 const Hero = () => {
   return (
     <section className="hero" id="hero">
-      {/* Ambient background video */}
-      <video
-        className="hero-video"
-        src="/assets/videos/isolated_car_shot.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-
       {/* Atmosphere */}
       <div className="hero-bg" />
       <div className="hero-grad-left" />
       <div className="hero-grad-top" />
       <div className="hero-grad-bottom" />
 
-      {/*
-        BMW 750 hero image — wet street, night exterior
-        Swap src to /assets/bmw-hero-v2.png or /assets/bmw-hero.png
-      */}
+      {/* Video replaces static car image — same position slot */}
       <div className="hero-car">
-        <img
-          src="/assets/bmw-hero-v2.png"
-          alt="White BMW 750 — Baltimore night arrival"
-          loading="eager"
-          decoding="async"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/assets/videos/isolated_car_shot.mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Editorial content — left-aligned */}
