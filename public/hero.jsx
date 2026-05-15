@@ -1,3 +1,65 @@
+// CinematicIntro — fullscreen BMW video splash, plays once per session
+const { useState, useEffect } = React;
+
+const CinematicIntro = () => {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const alreadySeen =
+    typeof sessionStorage !== 'undefined' && sessionStorage.getItem('ns-intro-seen');
+
+  const [visible, setVisible] = useState(!isMobile && !alreadySeen);
+  const [fading, setFading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  const dismiss = () => {
+    if (fading) return;
+    setFading(true);
+    setTimeout(() => {
+      setVisible(false);
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem('ns-intro-seen', '1');
+      }
+    }, 900);
+  };
+
+  // Dismiss on first scroll
+  useEffect(() => {
+    if (!visible) return;
+    window.addEventListener('scroll', dismiss, { once: true, passive: true });
+    return () => window.removeEventListener('scroll', dismiss);
+  }, [visible]);
+
+  if (!visible) return null;
+
+  return (
+    <div className={'ci ' + (fading ? 'ci--out' : '') + (loaded ? ' ci--loaded' : '')}>
+      {/* Video */}
+      <video
+        className="ci-video"
+        src="/assets/bmw-intro.mp4"
+        autoPlay
+        muted
+        playsInline
+        onCanPlayThrough={() => setLoaded(true)}
+        onEnded={() => setTimeout(dismiss, 600)}
+      />
+
+      {/* Vignette */}
+      <div className="ci-vignette" />
+
+      {/* Brand mark */}
+      <div className="ci-brand">
+        <p className="ci-brand-label">Night Series</p>
+        <p className="ci-brand-sub">Baltimore Private Chauffeur</p>
+      </div>
+
+      {/* Skip / Enter */}
+      <button className="ci-enter" onClick={dismiss} aria-label="Enter site">
+        Enter ↓
+      </button>
+    </div>
+  );
+};
+
 // Hero — Full viewport · BMW editorial · Left-aligned campaign composition
 const Hero = () => {
   return (
@@ -10,7 +72,7 @@ const Hero = () => {
 
       {/*
         BMW 750 hero image — wet street, night exterior
-        Swap src to /assets/bmw-hero-v2.png or /assets/bmw-hero.png
+        Swap: /assets/bmw-hero-v2.png (current) or /assets/bmw-hero.png
       */}
       <div className="hero-car">
         <img
@@ -47,4 +109,5 @@ const Hero = () => {
   );
 };
 
+window.CinematicIntro = CinematicIntro;
 window.Hero = Hero;

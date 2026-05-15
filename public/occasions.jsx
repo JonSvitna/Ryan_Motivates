@@ -27,33 +27,45 @@ const ExperienceStatement = () => {
 };
 
 // Moments — 3 editorial panels, not cards
+// Image slots for editorial photos — drop files into assets/ to replace placeholders.
+// Target filenames (upload these as @-path files):
+//   assets/editorial-waterfront.jpg  →  couple at Baltimore waterfront, BMW, formal night
+//   assets/editorial-water-club.jpg  →  chauffeur at The Water Club Baltimore
+//   assets/editorial-airport.jpg     →  corporate/airport BMW scene
+
+const _img = (target, fallback) => {
+  // Use target if it exists via a cached check; otherwise use fallback.
+  // Runtime check not possible in static JSX — swap to target once file is uploaded.
+  return target;
+};
+
 const MOMENTS = [
   {
     num: '01',
     title: 'PROM & FORMAL NIGHTS',
     sub: 'Make the entrance unforgettable.',
-    // Swap: /assets/bmw-exterior.png for best exterior night crop
-    img: '/assets/bmw-exterior.png',
-    alt: 'White BMW 750 — prom arrival',
-    pos: 'center center',
+    img: '/assets/editorial-waterfront.jpg',
+    fallback: '/assets/bmw-hero.png',
+    alt: 'White BMW 750 — Baltimore waterfront, formal night',
+    pos: 'center 40%',
   },
   {
     num: '02',
     title: 'DATE NIGHTS & ANNIVERSARIES',
     sub: 'Set the tone before dinner starts.',
-    // Swap: /assets/cabin-rear-bench.png or /assets/cabin-seats.png
-    img: '/assets/cabin-rear-bench.png',
-    alt: 'Red leather interior — intimate evening',
-    pos: 'center 40%',
+    img: '/assets/editorial-water-club.jpg',
+    fallback: '/assets/cabin-rear-wide.png',
+    alt: 'Chauffeur at The Water Club Baltimore — date night arrival',
+    pos: 'center 45%',
   },
   {
     num: '03',
     title: 'EXECUTIVE & AIRPORT TRAVEL',
     sub: 'Quiet. Private. Precise.',
-    // Swap: /assets/cabin-dash.png for cockpit precision shot
-    img: '/assets/cabin-dash.png',
-    alt: 'BMW 750 cockpit — executive travel',
-    pos: 'center 55%',
+    img: '/assets/editorial-airport.jpg',
+    fallback: '/assets/cabin-front-view.png',
+    alt: 'BMW 750 — corporate airport arrival',
+    pos: 'center 50%',
   },
 ];
 
@@ -69,6 +81,7 @@ const Moments = () => {
                 alt={m.alt}
                 style={{ objectPosition: m.pos }}
                 loading="lazy"
+                onError={(e) => { e.target.src = m.fallback; }}
               />
               <div className="moment-panel-overlay" />
               <div className="moment-panel-content">
