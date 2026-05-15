@@ -816,6 +816,7 @@ body::after {
   bottom: 0; left: 0; right: 0;
   z-index: 50;
   padding: 12px 20px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
   background: rgba(8,9,15,0.96);
   border-top: 1px solid var(--line);
   backdrop-filter: blur(20px);
@@ -854,25 +855,47 @@ body::after {
 }
 
 @media (max-width: 768px) {
-  :root { --px: 22px; --py: 72px; }
+  :root { --px: 22px; --py: 60px; }
 
-  /* Hero */
+  /* Nav */
+  .nav { padding: 18px var(--px); }
+
+  /* Hero — video fills section as full-bleed background */
   .hero-car {
-    width: 150%;
-    right: -25%;
-    opacity: 0.6;
+    inset: 0;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+  }
+  .hero-car video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .hero-grad-left {
     background: linear-gradient(
-      175deg,
+      180deg,
       var(--bg) 0%,
-      var(--bg) 35%,
-      rgba(8,9,15,0.9) 58%,
+      rgba(8,9,15,0.82) 40%,
+      rgba(8,9,15,0.55) 70%,
       transparent 100%
     );
   }
-  .hero-body { padding-bottom: 72px; }
-  .hero-actions { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .hero-body {
+    padding-bottom: 80px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .btn-primary,
+  .btn-ghost {
+    width: 100%;
+    text-align: center;
+  }
 
   /* ExperienceStatement */
   .exp-stmt-inner {
@@ -894,37 +917,65 @@ body::after {
   .moments-panels {
     flex-direction: column;
     height: auto;
-    gap: 10px;
+    gap: 8px;
   }
-  .moment-panel { height: 300px; flex: none !important; }
+  .moment-panel { height: 220px; flex: none !important; }
   .moments-panels:hover .moment-panel { flex: none !important; }
 
   /* Interior */
   .interior-exp-inner {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 36px;
   }
   .interior-exp-img {
-    aspect-ratio: 4/3;
+    aspect-ratio: 16/9;
     order: -1;
   }
 
   /* Baltimore */
   .baltimore-night-inner {
     grid-template-columns: 1fr;
-    gap: 52px;
+    gap: 40px;
   }
   .baltimore-night-right {
-    padding-left: 24px;
+    padding-left: 0;
+    border-left: none;
   }
+
+  /* Booking CTA */
+  .booking-cta-phone { letter-spacing: 0.02em; }
+  .booking-cta-actions { width: 100%; }
+  .booking-cta-actions .btn-primary,
+  .booking-cta-actions .btn-ghost { width: 100%; text-align: center; }
 
   /* Footer */
   .site-footer-inner {
     flex-direction: column;
     align-items: flex-start;
+    gap: 32px;
   }
   .site-footer-right { align-items: flex-start; }
+}
 
-  /* Booking CTA phone size */
-  .booking-cta-phone { letter-spacing: 0.02em; }
+@media (max-width: 480px) {
+  :root { --px: 18px; --py: 52px; }
+
+  /* Tighter hero on small phones */
+  .hero-body { padding-bottom: 72px; }
+  .hero-trust { display: none; }
+
+  /* Moments — shorter panels on small screens */
+  .moment-panel { height: 180px; }
+
+  /* Interior video — full-width on small phones */
+  .interior-exp-img { aspect-ratio: 4/3; }
+
+  /* Baltimore — remove left border rule on very small screens */
+  .baltimore-night-right { padding-left: 0; }
+
+  /* Booking phone number — prevent overflow */
+  .booking-cta-phone {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+    letter-spacing: 0.01em;
+  }
 }
