@@ -35,7 +35,7 @@ const MOMENTS = [
     // Swap: /assets/bmw-exterior.png for best exterior night crop
     img: '/assets/editorial-waterfront.jpg',
     alt: 'Couple at Baltimore waterfront — prom arrival',
-    pos: 'center center',
+    pos: 'center 20%',
   },
   {
     num: '02',
@@ -43,7 +43,7 @@ const MOMENTS = [
     sub: 'Set the tone before dinner starts.',
     img: '/assets/editorial-water-club.jpg',
     alt: 'Chauffeur at The Water Club Baltimore — formal night',
-    pos: 'center 40%',
+    pos: 'center 15%',
   },
   {
     num: '03',
@@ -51,7 +51,7 @@ const MOMENTS = [
     sub: 'Quiet. Private. Precise.',
     img: '/assets/editorial-airport.jpg',
     alt: 'BMW 750 — corporate airport transfer',
-    pos: 'center 55%',
+    pos: 'center 30%',
   },
 ];
 
