@@ -433,15 +433,18 @@ body::after {
   margin: 0 auto;
 }
 .moments-panels {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
+  display: flex;
   gap: 14px;
   height: 580px;
 }
 .moment-panel {
   position: relative;
   overflow: hidden;
+  flex: 1;
+  transition: flex 0.6s var(--ease-slow);
 }
+.moments-panels:hover .moment-panel { flex: 0.6; }
+.moment-panel:hover { flex: 2.2 !important; }
 .moment-panel img {
   position: absolute;
   inset: 0;
@@ -887,11 +890,12 @@ body::after {
 
   /* Moments */
   .moments-panels {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     height: auto;
     gap: 10px;
   }
-  .moment-panel { height: 300px; }
+  .moment-panel { height: 300px; flex: none !important; }
+  .moments-panels:hover .moment-panel { flex: none !important; }
 
   /* Interior */
   .interior-exp-inner {
