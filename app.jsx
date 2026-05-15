@@ -74,6 +74,7 @@ const App = () => {
 
   return (
     <>
+      <CinematicIntro />
       <div className="ribbon" />
       <Nav />
       <Hero />
